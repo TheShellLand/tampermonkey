@@ -4,17 +4,57 @@
 // @version      2025-08-11
 // @description  poof!
 // @author       You
-// @match        https://*.*
+// @match        https://*/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=rophim.me
 // @grant        none
 // ==/UserScript==
 
 
-function hideStuff() {
 
-    try {
-        const className = '';
-        if (document.getElementsByClassName(className)[0]) {document.getElementsByClassName(className)[0].remove()}; console.log(`[main] :: removed :: ${ className }`)} catch (error) {}
-}
+(function() {
+    'use strict';
 
-setInterval(hideStuff, 250);
+    const classes = [
+        'top-banner msft-content-native-ad-preview label-fix sliver-style-tuning',
+        'config_index_views_prg-apperror_topbanner_waterfall',
+        'cookiescript_pre_header',
+    ];
+    const ids = [
+        'cookiescript_injected',
+        'tpbr_topbar',
+    ];
+
+
+    function hideStuff(classes, ids) {
+
+        // delete id
+        for (const idName of ids) {
+            const idSearch = document.getElementById(idName);
+            if (idSearch) {
+                idSearch.remove();
+                console.log(`[tampermonkey] :: [www.js] :: removed :: class :: ${ idName }`);
+            };
+        };
+
+
+        // delete class
+        for (const className of classes) {
+            const classSearch = document.getElementsByClassName(className);
+            if (classSearch.length) {
+                for (let i = 0; i < classSearch.length; i++) {
+                    if (classSearch[i]) {
+                        classSearch[i].remove();
+                        console.log(`[tampermonkey] :: [www.js] :: removed :: id :: ${ className }`);
+                    }
+                }
+            }
+
+        };
+
+
+    };
+
+    setInterval(() => hideStuff(classes, ids), 250);
+
+
+})();
