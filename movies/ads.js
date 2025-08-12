@@ -17,6 +17,10 @@ function hideStuff() {
         const className = 'is-image';
         if (document.getElementsByClassName(className)[0]) {document.getElementsByClassName(className)[0].remove()}; console.log(`[main] :: removed :: ${ className }`)} catch (error) {}
 
+        try {
+        const className = 'el-image';
+        if (document.getElementsByClassName(className)[0]) {document.getElementsByClassName(className)[0].remove()}; console.log(`[main] :: removed :: ${ className }`)} catch (error) {}
+
 }
 
 setInterval(hideStuff, 250);
