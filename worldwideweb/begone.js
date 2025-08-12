@@ -10,41 +10,43 @@
 // ==/UserScript==
 
 
+class SiteClass {
+    constructor(domain = 'generic', classes = [], ids = []) {
+        this.domain = domain;
+        this.classes = classes;
+        this.ids = ids;
+    }
+
+    hide_classes() {
+        for (const className of this.classes) {
+            const classSearch = document.getElementsByClassName(className);
+            if (classSearch.length) {
+                for (let i = 0; i < classSearch.length; i++) {
+                    if (classSearch[i]) {
+                        classSearch[i].remove();
+                        console.log(`[tampermonkey] :: [begone.js] :: ${ this.domain } :: removed :: class :: ${className}`);
+                    }}}}}
+
+    hide_ids() {
+        for (const idName of this.ids) {
+            const idSearch = document.getElementById(idName);
+            if (idSearch) {
+                idSearch.remove();
+                console.log(`[tampermonkey] :: [begone.js] :: ${ this.domain } :: removed :: id :: ${idName}`);
+            }}}
+
+    hide() {
+        this.hide_classes();
+        this.hide_ids();
+    }
+
+}
+
+
+
 
 (function() {
     'use strict';
-
-    class SiteClass {
-        constructor(domain = 'generic', classes = [], ids = []) {
-            this.domain = domain;
-            this.classes = classes;
-            this.ids = ids;
-        }
-
-        hide_classes() {
-            for (const className of this.classes) {
-                const classSearch = document.getElementsByClassName(className);
-                if (classSearch.length) {
-                    for (let i = 0; i < classSearch.length; i++) {
-                        if (classSearch[i]) {
-                            classSearch[i].remove();
-                            console.log(`[tampermonkey] :: [begone.js] :: ${ this.domain } :: removed :: class :: ${className}`);
-                        }}}}}
-
-        hide_ids() {
-            for (const idName of this.ids) {
-                const idSearch = document.getElementById(idName);
-                if (idSearch) {
-                    idSearch.remove();
-                    console.log(`[tampermonkey] :: [begone.js] :: ${ this.domain } :: removed :: id :: ${idName}`);
-                }}}
-
-        hide() {
-            this.hide_classes();
-            this.hide_ids();
-        }
-
-    }
 
 
     // SITES
@@ -58,48 +60,48 @@
     )
 
     const youtube = new SiteClass(
-            'youtube.com',
-            [],
-            ['dismissible']
+        'youtube.com',
+        [],
+        []
     )
 
     const reddit = new SiteClass(
-            'reddit.com',
-            [
-                'promotedlink relative block'
-            ],
-            []
+        'reddit.com',
+        [
+            'promotedlink relative block'
+        ],
+        []
     )
 
     const stackoverflow = new SiteClass(
-            'stackoverflow.com',
-            [
-                'js-freemium-cta ps-relative mt32 mb8',
-            ],
-            [
-                'onetrust-consent-sdk',
-                'ch-popover',
-                'notice-sidebar-popover',
-                'announcement-banner',
-            ]
+        'stackoverflow.com',
+        [
+            'js-freemium-cta ps-relative mt32 mb8',
+        ],
+        [
+            'onetrust-consent-sdk',
+            'ch-popover',
+            'notice-sidebar-popover',
+            'announcement-banner',
+        ]
     )
 
     const msn = new SiteClass(
-            'msn.com',
-            ['cookiescript_pre_header'],
-            []
+        'msn.com',
+        ['cookiescript_pre_header'],
+        []
     )
 
     const cookies = new SiteClass(
-            'cookies',
-            ['top-banner msft-content-native-ad-preview label-fix sliver-style-tuning'],
-            ['cookiescript_injected']
+        'cookies',
+        ['top-banner msft-content-native-ad-preview label-fix sliver-style-tuning'],
+        ['cookiescript_injected']
     )
 
     const misc = new SiteClass(
-            'misc',
-            ['top-banner msft-content-native-ad-preview label-fix sliver-style-tuning'],
-            ['cookiescript_injected']
+        'misc',
+        ['top-banner msft-content-native-ad-preview label-fix sliver-style-tuning'],
+        ['cookiescript_injected']
     )
 
 
@@ -114,18 +116,12 @@
     ];
 
 
+    // Periodically call hide() on each SiteClass instance
+    setInterval(() => {
+        for (const site of sites) {
+            site.hide();
+        }
+    }, 250);
 
-    function main () {
-        // Periodically call hide() on each SiteClass instance
-        setInterval(() => {
-            for (const site of sites) {
-                site.hide();
-            }
-        }, 250);
-
-    };
-
-
-    main();
 
 })();
