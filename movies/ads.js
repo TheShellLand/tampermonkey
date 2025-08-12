@@ -51,6 +51,10 @@ function hideStuff() {
         const className = 'vg-b';
         if (document.getElementsByClassName(className)[0]) {document.getElementsByClassName(className)[0].remove()}; console.log(`[main] :: removed :: ${ className }`)} catch (error) {}
 
+    try {
+        const className = 'ads-mask-box';
+        if (document.getElementsByClassName(className)[0]) {document.getElementsByClassName(className)[0].remove()}; console.log(`[main] :: removed :: ${ className }`)} catch (error) {}
+
 
 }
 
