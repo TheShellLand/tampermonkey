@@ -7,6 +7,7 @@
 // @match        https://www.rophim.me/*
 // @match        https://www.olevod.com/*
 // @match        https://www.yfsp.tv/*
+// @match        https://www.zhuimj.tv/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=rophim.me
 // @grant        none
 // ==/UserScript==
