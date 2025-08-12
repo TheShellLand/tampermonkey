@@ -14,50 +14,89 @@
 (function() {
     'use strict';
 
-    const classes = [
-        'top-banner msft-content-native-ad-preview label-fix sliver-style-tuning',
-        'config_index_views_prg-apperror_topbanner_waterfall',
-        'cookiescript_pre_header',
-        'js-freemium-cta ps-relative mt32 mb8',
+    class SiteClass {
+        // Constructor method (optional but common)
+        constructor(domain = 'generic', classes = [], ids = []) {
+            this.domain = domain;
+            this.classes = classes;
+            this.ids = ids;
+        }
+
+        hide_classes() {
+            // delete class
+            for (const className of this.classes) {
+                const classSearch = document.getElementsByClassName(className);
+                if (classSearch.length) {
+                    for (let i = 0; i < classSearch.length; i++) {
+                        if (classSearch[i]) {
+                            classSearch[i].remove();
+                            console.log(`[tampermonkey] :: [begone.js] :: ${ this.domain } :: removed :: class :: ${className}`);
+                        }}}}}
+
+        hide_ids() {
+            // delete id
+            for (const idName of this.ids) {
+                const idSearch = document.getElementById(idName);
+                if (idSearch) {
+                    idSearch.remove();
+                    console.log(`[tampermonkey] :: [begone.js] :: ${ this.domain } :: removed :: id :: ${idName}`);
+                }}}
+
+        hide() {
+            this.hide_classes();
+            this.hide_ids();
+        }
+
+    }
+
+    const sites = [
+        new SiteClass(
+            'reddit.com',
+            [
+                'promotedlink relative block',
+            ],
+            []),
+        new SiteClass(
+            'stackoverflow.com',
+            [
+                'js-freemium-cta ps-relative mt32 mb8',
+            ],
+            [
+                'onetrust-consent-sdk',
+                'ch-popover',
+                'notice-sidebar-popover',
+                'announcement-banner',
+            ]),
+        new SiteClass(
+            'msn.com',
+            ['cookiescript_pre_header'],
+            []
+        ),
+        new SiteClass(
+            'cookies',
+            ['top-banner msft-content-native-ad-preview label-fix sliver-style-tuning'],
+            ['cookiescript_injected']
+        ),
+        new SiteClass(
+            'random',
+            ['top-banner msft-content-native-ad-preview label-fix sliver-style-tuning'],
+            ['cookiescript_injected']
+        )
     ];
-    const ids = [
-        'cookiescript_injected',
-        'tpbr_topbar',
-        'onetrust-consent-sdk',
-        'ch-popover',
-    ];
 
 
-    function hideStuff(classes, ids) {
 
-        // delete id
-        for (const idName of ids) {
-            const idSearch = document.getElementById(idName);
-            if (idSearch) {
-                idSearch.remove();
-                console.log(`[tampermonkey] :: [begone.js] :: removed :: class :: ${ idName }`);
-            };
-        };
-
-
-        // delete class
-        for (const className of classes) {
-            const classSearch = document.getElementsByClassName(className);
-            if (classSearch.length) {
-                for (let i = 0; i < classSearch.length; i++) {
-                    if (classSearch[i]) {
-                        classSearch[i].remove();
-                        console.log(`[tampermonkey] :: [begone.js] :: removed :: id :: ${ className }`);
-                    }
-                }
+    function main () {
+        // Periodically call hide() on each SiteClass instance
+        setInterval(() => {
+            for (const site of sites) {
+                site.hide();
             }
-
-        };
-
+        }, 250);
 
     };
 
-    setInterval(() => hideStuff(classes, ids), 250);
 
+    main();
 
 })();
