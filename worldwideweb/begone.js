@@ -15,7 +15,6 @@
     'use strict';
 
     class SiteClass {
-        // Constructor method (optional but common)
         constructor(domain = 'generic', classes = [], ids = []) {
             this.domain = domain;
             this.classes = classes;
@@ -23,7 +22,6 @@
         }
 
         hide_classes() {
-            // delete class
             for (const className of this.classes) {
                 const classSearch = document.getElementsByClassName(className);
                 if (classSearch.length) {
@@ -34,7 +32,6 @@
                         }}}}}
 
         hide_ids() {
-            // delete id
             for (const idName of this.ids) {
                 const idSearch = document.getElementById(idName);
                 if (idSearch) {
@@ -49,14 +46,23 @@
 
     }
 
-    const sites = [
-        new SiteClass(
+
+    // SITES
+    const youtube = new SiteClass(
+            'youtube.com',
+            [],
+            ['dismissible']
+    )
+
+    const reddit = new SiteClass(
             'reddit.com',
             [
-                'promotedlink relative block',
+                'promotedlink relative block'
             ],
-            []),
-        new SiteClass(
+            []
+    )
+
+    const stackoverflow = new SiteClass(
             'stackoverflow.com',
             [
                 'js-freemium-cta ps-relative mt32 mb8',
@@ -66,22 +72,35 @@
                 'ch-popover',
                 'notice-sidebar-popover',
                 'announcement-banner',
-            ]),
-        new SiteClass(
+            ]
+    )
+
+    const msn = new SiteClass(
             'msn.com',
             ['cookiescript_pre_header'],
             []
-        ),
-        new SiteClass(
+    )
+
+    const cookies = new SiteClass(
             'cookies',
             ['top-banner msft-content-native-ad-preview label-fix sliver-style-tuning'],
             ['cookiescript_injected']
-        ),
-        new SiteClass(
-            'random',
+    )
+
+    const misc = new SiteClass(
+            'misc',
             ['top-banner msft-content-native-ad-preview label-fix sliver-style-tuning'],
             ['cookiescript_injected']
-        )
+    )
+
+
+    const sites = [
+        youtube,
+        reddit,
+        stackoverflow,
+        msn,
+        cookies,
+        misc
     ];
 
 
