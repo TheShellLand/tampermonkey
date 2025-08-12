@@ -35,7 +35,7 @@
             const idSearch = document.getElementById(idName);
             if (idSearch) {
                 idSearch.remove();
-                console.log(`[tampermonkey] :: [www.js] :: removed :: class :: ${ idName }`);
+                console.log(`[tampermonkey] :: [begone.js] :: removed :: class :: ${ idName }`);
             };
         };
 
@@ -47,7 +47,7 @@
                 for (let i = 0; i < classSearch.length; i++) {
                     if (classSearch[i]) {
                         classSearch[i].remove();
-                        console.log(`[tampermonkey] :: [www.js] :: removed :: id :: ${ className }`);
+                        console.log(`[tampermonkey] :: [begone.js] :: removed :: id :: ${ className }`);
                     }
                 }
             }
