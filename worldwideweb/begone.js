@@ -48,6 +48,15 @@
 
 
     // SITES
+    const instagram = new SiteClass(
+        'instagram.com',
+        [
+            '_ap3a _aaco _aacw _aacx _aad6 _aadb',
+            '_aart _aaru _ai7q',
+        ],
+        []
+    )
+
     const youtube = new SiteClass(
             'youtube.com',
             [],
@@ -95,6 +104,7 @@
 
 
     const sites = [
+        instagram,
         youtube,
         reddit,
         stackoverflow,
