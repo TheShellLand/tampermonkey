@@ -18,10 +18,13 @@
         'top-banner msft-content-native-ad-preview label-fix sliver-style-tuning',
         'config_index_views_prg-apperror_topbanner_waterfall',
         'cookiescript_pre_header',
+        'js-freemium-cta ps-relative mt32 mb8',
     ];
     const ids = [
         'cookiescript_injected',
         'tpbr_topbar',
+        'onetrust-consent-sdk',
+        'ch-popover',
     ];
 
 
