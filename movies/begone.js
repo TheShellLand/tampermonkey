@@ -4,10 +4,11 @@
 // @version      2025-08-11
 // @description  try to take over the world!
 // @author       You
-// @match        https://www.rophim.me/*
-// @match        https://www.olevod.com/*
-// @match        https://www.yfsp.tv/*
-// @match        https://www.zhuimj.tv/*
+// @match        *://*.rophim.me/*
+// @match        *://*.olevod.com/*
+// @match        *://*.yfsp.tv/*
+// @match        *://*.zhuimj.tv/*
+// @match        *://*.zhuimj.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=rophim.me
 // @grant        none
 // ==/UserScript==
@@ -92,7 +93,11 @@ class SiteClass {
 
 
     const zhuimj = new SiteClass(
-        'zhuimj.tv',
+        'zhuimj.tv zhuimj.com',
+        [
+            'fed-foot-info fed-part-layout fed-back-whits',
+        ],
+        []
     )
 
 
