@@ -100,7 +100,12 @@ class SiteClass {
 
     const misc = new SiteClass(
         'misc',
-        ['top-banner msft-content-native-ad-preview label-fix sliver-style-tuning'],
+        [
+            'top-banner msft-content-native-ad-preview label-fix sliver-style-tuning',
+            'button button-medium button-outline-weak button button-medium button-outline-weak inline-block text-center max-w-full flex items-center button-promotion--icon-gradient button-promotion--full-gradient flex items-center gap-2',
+            'flex flex-1 flex-nowrap text-left ml-0 navigation-link-header-group-link navigation-link-header-group-link--force-min-block-size items-start',
+            'navigation-item w-full px-3 mb-0.5 navigation-link-header-group navigation-link-header-group--force-min-block-size navigation-link-header-group--expandable',
+        ],
         ['cookiescript_injected']
     )
 
