@@ -91,6 +91,11 @@ class SiteClass {
     )
 
 
+    const zhuimj = new SiteClass(
+        'zhuimj.tv',
+    )
+
+
     const movies = new SiteClass(
         'movies',
         [
@@ -114,6 +119,7 @@ class SiteClass {
         yfsp,
         rophim,
         olevod,
+        zhuimj,
     ];
 
 
