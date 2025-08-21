@@ -14,6 +14,7 @@
 // ==/UserScript==
 
 
+const script_name = 'begone.js';
 
 class SiteClass {
     constructor(domain = 'generic', classes = [], ids = []) {
@@ -29,7 +30,7 @@ class SiteClass {
                 for (let i = 0; i < classSearch.length; i++) {
                     if (classSearch[i]) {
                         classSearch[i].remove();
-                        console.log(`[tampermonkey] :: [begone.js] :: ${ this.domain } :: removed :: class :: ${className}`);
+                        console.log(`[tampermonkey] :: [${ script_name }] :: ${ this.domain } :: removed :: class :: ${className}`);
                     }}}}}
 
     hide_ids() {
@@ -37,7 +38,7 @@ class SiteClass {
             const idSearch = document.getElementById(idName);
             if (idSearch) {
                 idSearch.remove();
-                console.log(`[tampermonkey] :: [begone.js] :: ${ this.domain } :: removed :: id :: ${idName}`);
+                console.log(`[tampermonkey] :: [${ script_name }] :: ${ this.domain } :: removed :: id :: ${idName}`);
             }}}
 
     hide() {
