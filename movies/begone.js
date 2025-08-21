@@ -65,7 +65,7 @@ class SiteClass {
 
     sites.push(new SiteClass(
         'rophim.me',
-        ['footer-elements','fade v-modal d-modal sspp-modal modal show','my-area','sspp-area is-post','app-download','denied-icon','item-v item-rate','item-v item-comment','v-line','v-rating','sspp-area is-3x2','fade modal-backdrop show'],
+        ['footer-elements','fade v-modal d-modal sspp-modal modal show','my-area','sspp-area is-post','app-download','denied-icon','item-v item-rate','item-v item-comment','v-line','v-rating','sspp-area is-3x2','fade modal-backdrop show','is-image'],
         ['main_user','comment-area']
     ))
 
@@ -86,9 +86,7 @@ class SiteClass {
 
     sites.push(new SiteClass(
         'movies',
-        [
-            'is-image','pc-content pc-ads','pc-home-swiper','pc-mask swiper-mask-circle','pc-home-swiper','inner position-relative w-100 h-100',
-            'inner position-relative w-100 h-100 ng-star-inserted','tab-live','vg-b','ads-mask-box',],
+        ['pc-content pc-ads','pc-home-swiper','pc-mask swiper-mask-circle','pc-home-swiper','inner position-relative w-100 h-100','inner position-relative w-100 h-100 ng-star-inserted','tab-live','vg-b','ads-mask-box',],
         []
     ))
 
