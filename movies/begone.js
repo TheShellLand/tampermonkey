@@ -65,7 +65,7 @@ class SiteClass {
 
     sites.push(new SiteClass(
         'rophim.me',
-        ['footer-elements','fade v-modal d-modal sspp-modal modal show','my-area','sspp-area is-post','app-download','denied-icon','item-v item-rate','item-v item-comment','v-line','v-rating','sspp-area is-3x2'],
+        ['footer-elements','fade v-modal d-modal sspp-modal modal show','my-area','sspp-area is-post','app-download','denied-icon','item-v item-rate','item-v item-comment','v-line','v-rating','sspp-area is-3x2','fade modal-backdrop show'],
         ['main_user','comment-area']
     ))
 
