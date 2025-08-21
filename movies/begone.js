@@ -55,7 +55,7 @@ class SiteClass {
     const sites = [];
 
     // SITES
-    
+
     sites.push(new SiteClass(
         'olevod.com',
         ['pc-footers','pc-sdier','right'],
