@@ -48,58 +48,48 @@ class SiteClass {
 
 (function() {
     'use strict';
+    const sites = [];
 
 
     // SITES
-    const instagram = new SiteClass(
+    
+    sites.push(new SiteClass(
         'instagram.com',
-        [
-            '_ap3a _aaco _aacw _aacx _aad6 _aadb',
-            '_aart _aaru _ai7q',
-        ],
+        ['_ap3a _aaco _aacw _aacx _aad6 _aadb','_aart _aaru _ai7q',],
         []
-    )
+    ))
 
-    const youtube = new SiteClass(
+    sites.push(new SiteClass(
         'youtube.com',
         [],
         []
-    )
+    ))
 
-    const reddit = new SiteClass(
+    sites.push(new SiteClass(
         'reddit.com',
-        [
-            'promotedlink relative block'
-        ],
+        ['promotedlink relative block'],
         []
-    )
+    ))
 
-    const stackoverflow = new SiteClass(
+    sites.push(new SiteClass(
         'stackoverflow.com',
-        [
-            'js-freemium-cta ps-relative mt32 mb8',
-        ],
-        [
-            'onetrust-consent-sdk',
-            'ch-popover',
-            'notice-sidebar-popover',
-            'announcement-banner',
-        ]
-    )
+        ['js-freemium-cta ps-relative mt32 mb8'],
+        ['onetrust-consent-sdk','ch-popover','notice-sidebar-popover','announcement-banner',]
+    ))
 
-    const msn = new SiteClass(
+    sites.push(new SiteClass(
         'msn.com',
         ['cookiescript_pre_header'],
         []
-    )
+    ))
 
-    const cookies = new SiteClass(
+    sites.push(new SiteClass(
         'cookies',
         ['top-banner msft-content-native-ad-preview label-fix sliver-style-tuning'],
         ['cookiescript_injected']
-    )
+    ))
 
-    const misc = new SiteClass(
+    sites.push(new SiteClass(
         'misc',
         [
             'top-banner msft-content-native-ad-preview label-fix sliver-style-tuning',
@@ -108,18 +98,8 @@ class SiteClass {
             'navigation-item w-full px-3 mb-0.5 navigation-link-header-group navigation-link-header-group--force-min-block-size navigation-link-header-group--expandable',
         ],
         ['cookiescript_injected']
-    )
+    ))
 
-
-    const sites = [
-        instagram,
-        youtube,
-        reddit,
-        stackoverflow,
-        msn,
-        cookies,
-        misc
-    ];
 
 
     // Periodically call hide() on each SiteClass instance
