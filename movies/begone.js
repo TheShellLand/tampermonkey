@@ -14,7 +14,7 @@
 // ==/UserScript==
 
 
-const script_name = 'begone.js';
+const script_name = 'movies3.js';
 
 class SiteClass {
     constructor(domain = 'generic', classes = [], ids = []) {
