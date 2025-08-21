@@ -55,48 +55,28 @@ class SiteClass {
 
     const olevod = new SiteClass(
         'olevod.com',
-        [
-            'pc-footers',
-        ],
-        [
-
-        ]
+        ['pc-footers','pc-sdier','right'],
+        []
     )
 
 
     const rophim = new SiteClass(
         'rophim.me',
-        [
-            'footer-elements',
-            'fade v-modal d-modal sspp-modal modal show',
-            'my-area',
-            'sspp-area is-post',
-        ],
-        [
-
-        ]
+        ['footer-elements','fade v-modal d-modal sspp-modal modal show','my-area','sspp-area is-post','app-download','denied-icon','item-v item-rate','item-v item-comment','v-line','v-rating','sspp-area is-3x2'],
+        ['main_user','comment-area']
     )
 
 
     const yfsp = new SiteClass(
         'yfsp.tv',
-        [
-            'auth-label s',
-            'bl ng-star-inserted',
-            'ss-ctn',
-            'container-p',
-        ],
-        [
-            'commentBox',
-        ]
+        ['auth-label s','bl ng-star-inserted','ss-ctn','container-p','vg-bg','login_input_emoji','list icon_3','qrcode-box','user-login','user-item user-back user-news'],
+        ['commentBox','sticky-block','commentsArea']
     )
 
 
     const zhuimj = new SiteClass(
         'zhuimj.tv zhuimj.com',
-        [
-            'fed-foot-info fed-part-layout fed-back-whits',
-        ],
+        ['fed-foot-info fed-part-layout fed-back-whits',],
         []
     )
 
@@ -104,17 +84,8 @@ class SiteClass {
     const movies = new SiteClass(
         'movies',
         [
-            'is-image',
-            'pc-content pc-ads',
-            'pc-home-swiper',
-            'pc-mask swiper-mask-circle',
-            'pc-home-swiper',
-            'inner position-relative w-100 h-100',
-            'inner position-relative w-100 h-100 ng-star-inserted',
-            'tab-live',
-            'vg-b',
-            'ads-mask-box',
-        ],
+            'is-image','pc-content pc-ads','pc-home-swiper','pc-mask swiper-mask-circle','pc-home-swiper','inner position-relative w-100 h-100',
+            'inner position-relative w-100 h-100 ng-star-inserted','tab-live','vg-b','ads-mask-box',],
         []
     )
 
