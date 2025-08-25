@@ -72,7 +72,7 @@ class SiteClass {
 
     sites.push(new SiteClass(
         'yfsp.tv',
-        ['auth-label s','bl ng-star-inserted','ss-ctn','container-p','vg-bg','login_input_emoji','list icon_3','qrcode-box','user-login','user-item user-back user-news'],
+        ['auth-label s','bl ng-star-inserted','ss-ctn','container-p','vg-bg','login_input_emoji','list icon_3','qrcode-box','user-login','user-item user-back user-news','gg-tips-text'],
         ['commentBox','sticky-block','commentsArea']
     ))
 
