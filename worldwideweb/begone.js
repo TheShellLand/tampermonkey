@@ -12,10 +12,12 @@
 const script_name = 'begone.js';
 
 class SiteClass {
-    constructor(domain = 'generic', classes = [], ids = []) {
+    constructor(domain = 'generic', classes = [], ids = [], tags = [], names = []) {
         this.domain = domain;
         this.classes = classes;
         this.ids = ids;
+        this.tags = tags;
+        this.names = names;
     }
 
     hide_classes() {
@@ -36,9 +38,31 @@ class SiteClass {
                 console.log(`[tampermonkey] :: [${ script_name }] :: ${ this.domain } :: removed :: id :: ${idName}`);
             }}}
 
+    hide_tags() {
+        for (const tagName of this.classes) {
+            const tagSearch = document.getElementsByTagName(tagName);
+            if (tagSearch.length) {
+                for (let i = 0; i < tagSearch.length; i++) {
+                    if (tagSearch[i]) {
+                        tagSearch[i].remove();
+                        console.log(`[tampermonkey] :: [${ script_name }] :: ${ this.domain } :: removed :: class :: ${tagName}`);
+                    }}}}}
+
+    hide_names() {
+        for (const nameName of this.classes) {
+            const nameSearch = document.getElementsByName(nameName);
+            if (nameSearch.length) {
+                for (let i = 0; i < nameSearch.length; i++) {
+                    if (nameSearch[i]) {
+                        nameSearch[i].remove();
+                        console.log(`[tampermonkey] :: [${ script_name }] :: ${ this.domain } :: removed :: class :: ${nameName}`);
+                    }}}}}
+
     hide() {
         this.hide_classes();
         this.hide_ids();
+        this.hide_tags();
+        this.hide_names();
     }
 
 }
@@ -84,6 +108,18 @@ class SiteClass {
     ))
 
     sites.push(new SiteClass(
+        'openvpn.com',
+        ['billing-banner'],
+        []
+    ))
+
+    sites.push(new SiteClass(
+        'crunchyroll.com',
+        ['erc-premium-upsell-banner premium-upsell-banner-container','premium-upsell-banner-container','upsell-content','erc-anonymous-upsell-banner','anonymous-banner-body',],
+        ['upsell-popup',]
+    ))
+
+    sites.push(new SiteClass(
         'cookies',
         ['top-banner msft-content-native-ad-preview label-fix sliver-style-tuning'],
         ['cookiescript_injected']
@@ -96,8 +132,10 @@ class SiteClass {
             'button button-medium button-outline-weak button button-medium button-outline-weak inline-block text-center max-w-full flex items-center button-promotion--icon-gradient button-promotion--full-gradient flex items-center gap-2',
             'flex flex-1 flex-nowrap text-left ml-0 navigation-link-header-group-link navigation-link-header-group-link--force-min-block-size items-start',
             'navigation-item w-full px-3 mb-0.5 navigation-link-header-group navigation-link-header-group--force-min-block-size navigation-link-header-group--expandable',
+            'ad-zone-container',
+            'erc-anonymous-consent',
         ],
-        ['cookiescript_injected']
+        ['cookiescript_injected',]
     ))
 
 
