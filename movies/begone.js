@@ -17,10 +17,12 @@
 const script_name = 'movies3.js';
 
 class SiteClass {
-    constructor(domain = 'generic', classes = [], ids = []) {
+    constructor(domain = 'generic', classes = [], ids = [], tags = [], names = []) {
         this.domain = domain;
         this.classes = classes;
         this.ids = ids;
+        this.tags = tags;
+        this.names = names;
     }
 
     hide_classes() {
@@ -41,9 +43,31 @@ class SiteClass {
                 console.log(`[tampermonkey] :: [${ script_name }] :: ${ this.domain } :: removed :: id :: ${idName}`);
             }}}
 
+    hide_tags() {
+        for (const tagName of this.classes) {
+            const tagSearch = document.getElementsByTagName(tagName);
+            if (tagSearch.length) {
+                for (let i = 0; i < tagSearch.length; i++) {
+                    if (tagSearch[i]) {
+                        tagSearch[i].remove();
+                        console.log(`[tampermonkey] :: [${ script_name }] :: ${ this.domain } :: removed :: class :: ${tagName}`);
+                    }}}}}
+
+    hide_names() {
+        for (const nameName of this.classes) {
+            const nameSearch = document.getElementsByName(nameName);
+            if (nameSearch.length) {
+                for (let i = 0; i < nameSearch.length; i++) {
+                    if (nameSearch[i]) {
+                        nameSearch[i].remove();
+                        console.log(`[tampermonkey] :: [${ script_name }] :: ${ this.domain } :: removed :: class :: ${nameName}`);
+                    }}}}}
+
     hide() {
         this.hide_classes();
         this.hide_ids();
+        this.hide_tags();
+        this.hide_names();
     }
 
 }
@@ -66,7 +90,7 @@ class SiteClass {
     sites.push(new SiteClass(
         'rophim.me',
         ['footer-elements','fade v-modal d-modal sspp-modal modal show','my-area','sspp-area is-post','app-download','denied-icon','item-v item-rate','item-v item-comment','v-line','v-rating','sspp-area is-3x2','fade modal-backdrop show','is-image',
-        'quality-notice','discuss-wrap'],
+        'quality-notice','discuss-wrap','model-tabs actor-tabs'],
         [
             'main_user',
             //'comment-area'
