@@ -159,7 +159,7 @@ function debug (log, level = 0) {
 
 
     sites.push(new SiteClass(
-        'movies',
+        'dumpster',
         ['pc-content pc-ads','pc-home-swiper','pc-mask swiper-mask-circle','pc-home-swiper',
         'inner position-relative w-100 h-100','inner position-relative w-100 h-100 ng-star-inserted','tab-live','vg-b','ads-mask-box',],
     ))
