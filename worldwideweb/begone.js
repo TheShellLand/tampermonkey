@@ -100,7 +100,8 @@ class SiteClass {
     hide() {
 
         if (this.strict_domain_match) {
-            if (! document.domain.includes(this.domain)) {return;}
+            if (! document.domain.includes(this.domain)) {
+                return;}
         }
 
         //this.hide_classes();
