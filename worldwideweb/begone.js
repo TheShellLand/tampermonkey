@@ -9,15 +9,15 @@
 // @grant        none
 // ==/UserScript==
 
-const script_name = 'begone.js';
+
+const DEBUG = 2;
+
 
 class SiteClass {
-    constructor(domain = 'generic', classes = [], ids = [], tags = [], names = []) {
+    constructor(domain = 'generic', fuzzy = [], strict_domain_match = false) {
         this.domain = domain;
-        this.classes = classes;
-        this.ids = ids;
-        this.tags = tags;
-        this.names = names;
+        this.fuzzy = fuzzy;
+        this.strict_domain_match = strict_domain_match;
     }
 
     hide_classes() {
@@ -27,7 +27,7 @@ class SiteClass {
                 for (let i = 0; i < classSearch.length; i++) {
                     if (classSearch[i]) {
                         classSearch[i].remove();
-                        console.log(`[tampermonkey] :: [${ script_name }] :: ${ this.domain } :: removed :: class :: ${className}`);
+                        console.log(`[tampermonkey]:: ${ this.domain } :: removed :: class :: ${className}`);
                     }}}}}
 
     hide_ids() {
@@ -35,39 +35,88 @@ class SiteClass {
             const idSearch = document.getElementById(idName);
             if (idSearch) {
                 idSearch.remove();
-                console.log(`[tampermonkey] :: [${ script_name }] :: ${ this.domain } :: removed :: id :: ${idName}`);
+                console.log(`[tampermonkey] :: ${ this.domain } :: removed :: id :: ${idName}`);
             }}}
 
     hide_tags() {
-        for (const tagName of this.classes) {
+        for (const tagName of this.tags) {
             const tagSearch = document.getElementsByTagName(tagName);
             if (tagSearch.length) {
                 for (let i = 0; i < tagSearch.length; i++) {
                     if (tagSearch[i]) {
                         tagSearch[i].remove();
-                        console.log(`[tampermonkey] :: [${ script_name }] :: ${ this.domain } :: removed :: class :: ${tagName}`);
+                        console.log(`[tampermonkey] :: ${ this.domain } :: removed :: tag :: ${tagName}`);
                     }}}}}
 
     hide_names() {
-        for (const nameName of this.classes) {
+        for (const nameName of this.names) {
             const nameSearch = document.getElementsByName(nameName);
             if (nameSearch.length) {
                 for (let i = 0; i < nameSearch.length; i++) {
                     if (nameSearch[i]) {
                         nameSearch[i].remove();
-                        console.log(`[tampermonkey] :: [${ script_name }] :: ${ this.domain } :: removed :: class :: ${nameName}`);
+                        console.log(`[tampermonkey] :: ${ this.domain } :: removed :: name :: ${nameName}`);
                     }}}}}
 
+    hide_fuzzy() {
+
+        // check if string is anywhere in the element
+        function elementContainsString(tag, string) {
+            debug(`[tampermonkey] :: hide_fuzzy :: elementContainsString :: tag :: ${tag} :: string :: ${string}`, 4);
+
+            if (tag.attributes === undefined) {return false;}
+
+            var attrList = Array.from(tag.attributes);
+            for (var attrItem in attrList) {
+
+                var attr = attrList[attrItem];
+                debug(`[tampermonkey] :: hide_fuzzy :: elementContainsString :: attr :: ${attr.value}`, 4);
+
+                if (typeof(attr.value) === undefined) {continue;}
+
+                if (attr.value.includes(string)) {
+                    debug(`[tampermonkey] :: hide_fuzzy :: elementContainsString :: FOUND :: ${attr}`, 3);
+                    return true;}}
+
+            return false;}
+
+
+        if (this.fuzzy.length > 0) {
+
+            var allTags = document.getElementsByTagName("*");
+            //var allTags = document.body.getElementsByTagName("div");
+
+            for (var tag of allTags) {
+                debug(`[tampermonkey] :: ${ this.domain } :: hide_fuzzy :: tag :: ${tag}`, 4);
+
+                for (var fuzzyName of this.fuzzy) {
+                    debug(`[tampermonkey] :: ${ this.domain } :: hide_fuzzy :: fuzzyName :: ${fuzzyName}`, 4);
+                    if (elementContainsString(tag, fuzzyName)) {
+                        tag.remove();
+                        debug(`[tampermonkey] :: ${ this.domain } :: removed :: ${tag.localName} :: ${fuzzyName}`, 1);
+                    }}}
+        }}
+
     hide() {
-        this.hide_classes();
-        this.hide_ids();
-        this.hide_tags();
-        this.hide_names();
+
+        if (this.strict_domain_match) {
+            if (! document.URL.includes(this.domain)) {return;}
+        }
+
+        //this.hide_classes();
+        //this.hide_ids();
+        //this.hide_tags();
+        //this.hide_names();
+        this.hide_fuzzy();
     }
 
 }
 
 
+
+function debug (log, level = 0) {
+    if (level <= DEBUG) {
+        console.log(`${log}`)}}
 
 
 (function() {
@@ -76,66 +125,46 @@ class SiteClass {
 
 
     // SITES
-    
+
     sites.push(new SiteClass(
         'instagram.com',
         ['_ap3a _aaco _aacw _aacx _aad6 _aadb','_aart _aaru _ai7q',],
-        []
     ))
 
     sites.push(new SiteClass(
         'youtube.com',
         [],
-        []
     ))
 
     sites.push(new SiteClass(
         'reddit.com',
         ['promotedlink relative block'],
-        []
     ))
 
     sites.push(new SiteClass(
         'stackoverflow.com',
-        ['js-freemium-cta ps-relative mt32 mb8'],
-        ['onetrust-consent-sdk','ch-popover','notice-sidebar-popover','announcement-banner',]
+        ['js-freemium-cta ps-relative mt32 mb8',
+        'onetrust-consent-sdk','ch-popover','notice-sidebar-popover','announcement-banner',]
     ))
 
     sites.push(new SiteClass(
         'msn.com',
         ['cookiescript_pre_header'],
-        []
-    ))
-
-    sites.push(new SiteClass(
-        'openvpn.com',
-        ['billing-banner'],
-        []
-    ))
-
-    sites.push(new SiteClass(
-        'crunchyroll.com',
-        ['erc-premium-upsell-banner premium-upsell-banner-container','premium-upsell-banner-container','upsell-content','erc-anonymous-upsell-banner','anonymous-banner-body',],
-        ['upsell-popup',]
     ))
 
     sites.push(new SiteClass(
         'cookies',
-        ['top-banner msft-content-native-ad-preview label-fix sliver-style-tuning'],
-        ['cookiescript_injected']
+        ['top-banner msft-content-native-ad-preview label-fix sliver-style-tuning',
+        'cookiescript_injected']
     ))
 
     sites.push(new SiteClass(
-        'misc',
-        [
-            'top-banner msft-content-native-ad-preview label-fix sliver-style-tuning',
-            'button button-medium button-outline-weak button button-medium button-outline-weak inline-block text-center max-w-full flex items-center button-promotion--icon-gradient button-promotion--full-gradient flex items-center gap-2',
-            'flex flex-1 flex-nowrap text-left ml-0 navigation-link-header-group-link navigation-link-header-group-link--force-min-block-size items-start',
-            'navigation-item w-full px-3 mb-0.5 navigation-link-header-group navigation-link-header-group--force-min-block-size navigation-link-header-group--expandable',
-            'ad-zone-container',
-            'erc-anonymous-consent',
-        ],
-        ['cookiescript_injected',]
+        'dumpster',
+        ['top-banner msft-content-native-ad-preview label-fix sliver-style-tuning',
+        'button button-medium button-outline-weak button button-medium button-outline-weak inline-block text-center max-w-full flex items-center button-promotion--icon-gradient button-promotion--full-gradient flex items-center gap-2',
+        'flex flex-1 flex-nowrap text-left ml-0 navigation-link-header-group-link navigation-link-header-group-link--force-min-block-size items-start',
+        'navigation-item w-full px-3 mb-0.5 navigation-link-header-group navigation-link-header-group--force-min-block-size navigation-link-header-group--expandable',
+        'cookiescript_injected']
     ))
 
 
@@ -145,7 +174,7 @@ class SiteClass {
         for (const site of sites) {
             site.hide();
         }
-    }, 250);
+    }, 1000);
 
 
 })();
