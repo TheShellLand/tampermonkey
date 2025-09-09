@@ -2,7 +2,7 @@
 // @name         clean the entire world wide web
 // @description  we need a cleaner internet. here is the start.
 // @namespace    http://tampermonkey.net/
-// @version      0.9
+// @version      0.10
 // @author       https://github.com/TheShellLand/tampermonkey
 // @match        https://*/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=rophim.me
@@ -97,7 +97,7 @@ class SiteClass {
             let textCheck = [
                 check_text,
                 check_simpleText,
-                //check_textContent,
+                check_textContent,
                 //check_innerText,
             ]
 
@@ -122,7 +122,8 @@ class SiteClass {
         if (this.fuzzy.length > 0) {
 
             // need to find a way to cache and hash this data
-            var allTags = document.getElementsByTagName("*");
+            //var allTags = document.getElementsByTagName("*");
+            var allTags = document.body.getElementsByTagName("*");
 
             for (var tag of allTags) {
                 debug(`[tampermonkey] :: ${ this.domain } :: hide_fuzzy :: tag :: ${tag}`, 4);
@@ -177,6 +178,7 @@ function debug (log, level = 0) {
     sites.push(new SiteClass('lazada', true, ['banner-wrapper','card-platform-campaign-banner-container','card-countdown','pc-download-module','banner-image','card-bottom-banner','topActionSell','topActionDownload','footer-first','footer-second','footer-third','footer-fourth','lzd-header-banner','lzd-menu-labels','hotBorder','module_inner_link']) )
     sites.push(new SiteClass('msn.com', true, ['cookiescript_pre_header']) )
     sites.push(new SiteClass('music.youtube.com', true, ['ytmusic-guide-signin-promo-renderer']) )
+    sites.push(new SiteClass('openvpn.com', true, ['billing-banner']) )
     sites.push(new SiteClass('reddit.com', true, ['promotedlink relative block']) )
     sites.push(new SiteClass('stackoverflow.com', true, ['js-freemium-cta ps-relative mt32 mb8','onetrust-consent-sdk','ch-popover','notice-sidebar-popover','announcement-banner']) )
     sites.push(new SiteClass('youtube.com', true, ['Shorts','Sports','Help','Send feedback','YouTube Kids','YouTube Music','YouTube Studio','More from YouTube','guide-links-secondary','footer','ytd-guide-signin-promo-renderer']) )
