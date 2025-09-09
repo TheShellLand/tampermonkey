@@ -2,7 +2,7 @@
 // @name         clean the entire world wide web
 // @description  we need a cleaner internet. here is the start.
 // @namespace    http://tampermonkey.net/
-// @version      2025-09-10
+// @version      0.1
 // @author       https://github.com/TheShellLand/tampermonkey
 // @match        https://*/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=rophim.me
@@ -126,7 +126,9 @@ function debug (log, level = 0) {
 
 
     // SITES
-    //sites.push(new SiteClass('generic', ['class id data-name pretty much any element.attribute'], true/false) )
+
+    // Adding a new site
+    //sites.push(new SiteClass('domain', ['class, id, data-name, or pretty much any element.attribute.value'], true/false) )
 
     sites.push(new SiteClass('instagram.com', ['_ap3a _aaco _aacw _aacx _aad6 _aadb','_aart _aaru _ai7q',]) )
     sites.push(new SiteClass('youtube.com', []) )
@@ -134,9 +136,9 @@ function debug (log, level = 0) {
     sites.push(new SiteClass('stackoverflow.com', ['js-freemium-cta ps-relative mt32 mb8','onetrust-consent-sdk','ch-popover','notice-sidebar-popover','announcement-banner']) )
     sites.push(new SiteClass('msn.com', ['cookiescript_pre_header']) )
     
-    sites.push(new SiteClass('cookies', ['top-banner msft-content-native-ad-preview label-fix sliver-style-tuning','cookiescript_injected']) )
+    sites.push(new SiteClass('remove cookie popups', ['top-banner msft-content-native-ad-preview label-fix sliver-style-tuning','cookiescript_injected']) )
 
-    sites.push(new SiteClass('dumpster fire', ['top-banner msft-content-native-ad-preview label-fix sliver-style-tuning','button button-medium button-outline-weak button button-medium button-outline-weak inline-block text-center max-w-full flex items-center button-promotion--icon-gradient button-promotion--full-gradient flex items-center gap-2','flex flex-1 flex-nowrap text-left ml-0 navigation-link-header-group-link navigation-link-header-group-link--force-min-block-size items-start','navigation-item w-full px-3 mb-0.5 navigation-link-header-group navigation-link-header-group--force-min-block-size navigation-link-header-group--expandable','cookiescript_injected']) )
+    sites.push(new SiteClass('big dumpster fire', ['top-banner msft-content-native-ad-preview label-fix sliver-style-tuning','button button-medium button-outline-weak button button-medium button-outline-weak inline-block text-center max-w-full flex items-center button-promotion--icon-gradient button-promotion--full-gradient flex items-center gap-2','flex flex-1 flex-nowrap text-left ml-0 navigation-link-header-group-link navigation-link-header-group-link--force-min-block-size items-start','navigation-item w-full px-3 mb-0.5 navigation-link-header-group navigation-link-header-group--force-min-block-size navigation-link-header-group--expandable','cookiescript_injected']) )
 
 
 
