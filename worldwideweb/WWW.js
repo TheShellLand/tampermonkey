@@ -2,7 +2,7 @@
 // @name         clean the entire world wide web
 // @description  we need a cleaner internet. here is the start.
 // @namespace    http://tampermonkey.net/
-// @version      0.5
+// @version      0.6
 // @author       https://github.com/TheShellLand/tampermonkey
 // @match        https://*/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=rophim.me
@@ -96,9 +96,9 @@ class SiteClass {
 
             let textCheck = [
                 check_text,
-                //check_innerText,
-                check_textContent,
                 check_simpleText,
+                //check_innerText,
+                //check_textContent,
             ]
 
             var foundText = undefined;
