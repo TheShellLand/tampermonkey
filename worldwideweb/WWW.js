@@ -160,6 +160,7 @@ function debug (log, level = 0) {
     //sites.push(new SiteClass('domain', true/false, ['class, id, data-name, or pretty much any element.attribute.value']) )
 
     sites.push(new SiteClass('instagram.com', true, ['xvbhtw8 x78zum5 xdt5ytf x5yr21d x1n2onr6','x1azxncr','Threads','Meta AI','contentinfo','_ap3a _aaco _aacw _aacx _aad6 _aadb','_aart _aaru _ai7q',]) )
+    sites.push(new SiteClass('lazada', true, ['footer-first','footer-second','footer-fourth','lzd-header-banner','lzd-menu-labels','hotBorder','module_inner_link']) )
     sites.push(new SiteClass('msn.com', true, ['cookiescript_pre_header']) )
     sites.push(new SiteClass('music.youtube.com', true, ['ytmusic-guide-signin-promo-renderer']) )
     sites.push(new SiteClass('reddit.com', true, ['promotedlink relative block']) )
