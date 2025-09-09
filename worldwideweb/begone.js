@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         the entire world wide web
 // @namespace    http://tampermonkey.net/
-// @version      2025-08-11
+// @version      2025-09-09
 // @description  poof!
 // @author       You
 // @match        https://*/*
