@@ -14,10 +14,10 @@ const DEBUG = 2;
 
 
 class SiteClass {
-    constructor(domain = 'generic', fuzzy = [], strict_domain_match = true) {
+    constructor(domain = 'generic', strict_domain_match = true, fuzzy = []) {
         this.domain = domain;
-        this.fuzzy = fuzzy;
         this.strict_domain_match = strict_domain_match;
+        this.fuzzy = fuzzy;
     }
 
     hide_classes() {
@@ -128,17 +128,22 @@ function debug (log, level = 0) {
     // SITES
 
     // Adding a new site
-    //sites.push(new SiteClass('domain', ['class, id, data-name, or pretty much any element.attribute.value'], true/false) )
+    //sites.push(new SiteClass('domain', true/false, ['class, id, data-name, or pretty much any element.attribute.value']) )
 
-    sites.push(new SiteClass('instagram.com', ['_ap3a _aaco _aacw _aacx _aad6 _aadb','_aart _aaru _ai7q',]) )
+    sites.push(new SiteClass('instagram.com', true, ['_ap3a _aaco _aacw _aacx _aad6 _aadb','_aart _aaru _ai7q',]) )
+    sites.push(new SiteClass('msn.com', true, ['cookiescript_pre_header']) )
+    sites.push(new SiteClass('reddit.com', true, ['promotedlink relative block']) )
+    sites.push(new SiteClass('stackoverflow.com', true, ['js-freemium-cta ps-relative mt32 mb8','onetrust-consent-sdk','ch-popover','notice-sidebar-popover','announcement-banner']) )
     sites.push(new SiteClass('youtube.com', []) )
-    sites.push(new SiteClass('reddit.com', ['promotedlink relative block']) )
-    sites.push(new SiteClass('stackoverflow.com', ['js-freemium-cta ps-relative mt32 mb8','onetrust-consent-sdk','ch-popover','notice-sidebar-popover','announcement-banner']) )
-    sites.push(new SiteClass('msn.com', ['cookiescript_pre_header']) )
-    
-    sites.push(new SiteClass('remove cookie popups', ['top-banner msft-content-native-ad-preview label-fix sliver-style-tuning','cookiescript_injected']) )
 
-    sites.push(new SiteClass('big dumpster fire', ['top-banner msft-content-native-ad-preview label-fix sliver-style-tuning','button button-medium button-outline-weak button button-medium button-outline-weak inline-block text-center max-w-full flex items-center button-promotion--icon-gradient button-promotion--full-gradient flex items-center gap-2','flex flex-1 flex-nowrap text-left ml-0 navigation-link-header-group-link navigation-link-header-group-link--force-min-block-size items-start','navigation-item w-full px-3 mb-0.5 navigation-link-header-group navigation-link-header-group--force-min-block-size navigation-link-header-group--expandable','cookiescript_injected']) )
+    sites.push(new SiteClass('olevod.com', true, ['pc-footers','pc-sdier','right']) )
+    sites.push(new SiteClass('rophim.me', true, ['footer-elements','fade v-modal d-modal sspp-modal modal show','my-area','sspp-area is-post','app-download','denied-icon','item-v item-rate','item-v item-comment','v-line','v-rating','sspp-area is-3x2','fade modal-backdrop show','is-image','quality-notice','discuss-wrap','main_user','comment-area'],true))
+    sites.push(new SiteClass('yfsp.tv', true, ['auth-label s','bl ng-star-inserted','ss-ctn','container-p','vg-bg','login_input_emoji','list icon_3','qrcode-box','user-login','user-item user-back user-news','gg-tips-text','commentBox','sticky-block','commentsArea']) )
+    sites.push(new SiteClass('zhuimj.tv zhuimj.com', true, ['fed-foot-info fed-part-layout fed-back-whits']) )
+
+    // very general blanket
+    sites.push(new SiteClass('remove cookie popups', false, ['top-banner msft-content-native-ad-preview label-fix sliver-style-tuning','cookiescript_injected']) )
+    sites.push(new SiteClass('big dumpster fire', false, ['pc-content pc-ads','pc-home-swiper','pc-mask swiper-mask-circle','pc-home-swiper','inner position-relative w-100 h-100','inner position-relative w-100 h-100 ng-star-inserted','tab-live','vg-b','ads-mask-box','top-banner msft-content-native-ad-preview label-fix sliver-style-tuning','button button-medium button-outline-weak button button-medium button-outline-weak inline-block text-center max-w-full flex items-center button-promotion--icon-gradient button-promotion--full-gradient flex items-center gap-2','flex flex-1 flex-nowrap text-left ml-0 navigation-link-header-group-link navigation-link-header-group-link--force-min-block-size items-start','navigation-item w-full px-3 mb-0.5 navigation-link-header-group navigation-link-header-group--force-min-block-size navigation-link-header-group--expandable','cookiescript_injected']) )
 
 
 
