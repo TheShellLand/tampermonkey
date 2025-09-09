@@ -2,7 +2,7 @@
 // @name         clean the entire world wide web
 // @description  we need a cleaner internet. here is the start.
 // @namespace    http://tampermonkey.net/
-// @version      0.2
+// @version      0.3
 // @author       https://github.com/TheShellLand/tampermonkey
 // @match        https://*/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=rophim.me
@@ -60,42 +60,70 @@ class SiteClass {
 
     hide_fuzzy() {
 
-        // check if string is anywhere in the element
-        function elementContainsString(tag, string) {
-            debug(`[tampermonkey] :: hide_fuzzy :: elementContainsString :: tag :: ${tag} :: string :: ${string}`, 4);
+        function attributesContainsString(tag, string) {
+            // check the element.attributes if it contains the string
 
-            if (tag.attributes === undefined) {return false;}
+            debug(`[tampermonkey] :: hide_fuzzy :: attributesContainsString :: tag :: ${tag} :: string :: ${string}`, 4);
 
-            var attrList = Array.from(tag.attributes);
+            var attributes = tag.attributes;
+            if (attributes === undefined) {return false;}
+
+            var attrList = Array.from(attributes);
             for (var attrItem in attrList) {
 
                 var attr = attrList[attrItem];
-                debug(`[tampermonkey] :: hide_fuzzy :: elementContainsString :: attr :: ${attr.value}`, 4);
+                var value = attr.value;
+                debug(`[tampermonkey] :: hide_fuzzy :: attributesContainsString :: value :: ${value}`, 4);
 
-                if (typeof(attr.value) === undefined) {continue;}
+                if (typeof(value) === undefined) {continue;}
 
-                if (attr.value.includes(string)) {
-                    debug(`[tampermonkey] :: hide_fuzzy :: elementContainsString :: FOUND :: ${attr}`, 3);
+                if (value.includes(string)) {
+                    debug(`[tampermonkey] :: hide_fuzzy :: attributesContainsString :: FOUND :: ${attr}`, 3);
                     return true;}}
 
             return false;}
 
 
+        function textContainsString(tag, string) {
+            // check the element.text if it contains the string
+
+            debug(`[tampermonkey] :: hide_fuzzy :: textContainsString :: tag :: ${tag} :: string :: ${string}`, 4);
+
+            var text = tag.text;
+            if (text === undefined) {return false;}
+
+            var simpleText = text.simpleText;
+            if (simpleText === undefined) {return false;}
+
+            if (! typeof(simpleText) === string) {return false;}
+
+            if (simpleText.includes(string)) {
+                debug(`[tampermonkey] :: hide_fuzzy :: textContainsString :: FOUND :: ${simpleText}`, 3);
+                return true;}
+
+            return false;}
+
+
+        // does the removing
         if (this.fuzzy.length > 0) {
 
             var allTags = document.getElementsByTagName("*");
-            //var allTags = document.body.getElementsByTagName("div");
 
             for (var tag of allTags) {
                 debug(`[tampermonkey] :: ${ this.domain } :: hide_fuzzy :: tag :: ${tag}`, 4);
 
-                for (var fuzzyName of this.fuzzy) {
+                for ( var fuzzyName of this.fuzzy ) {
                     debug(`[tampermonkey] :: ${ this.domain } :: hide_fuzzy :: fuzzyName :: ${fuzzyName}`, 4);
-                    if (elementContainsString(tag, fuzzyName)) {
+                    if ( attributesContainsString(tag, fuzzyName) ) {
                         tag.remove();
                         debug(`[tampermonkey] :: ${ this.domain } :: removed :: ${tag.localName} :: ${fuzzyName}`, 1);
-                    }}}
-        }}
+                    } else if ( textContainsString(tag, fuzzyName) ) {
+                        tag.remove();
+                        debug(`[tampermonkey] :: ${ this.domain } :: removed :: ${tag.localName} :: ${fuzzyName}`, 1);
+                    }
+                }}
+        }
+    }
 
     hide() {
 
@@ -135,7 +163,7 @@ function debug (log, level = 0) {
     sites.push(new SiteClass('music.youtube.com', true, ['ytmusic-guide-signin-promo-renderer']) )
     sites.push(new SiteClass('reddit.com', true, ['promotedlink relative block']) )
     sites.push(new SiteClass('stackoverflow.com', true, ['js-freemium-cta ps-relative mt32 mb8','onetrust-consent-sdk','ch-popover','notice-sidebar-popover','announcement-banner']) )
-    sites.push(new SiteClass('youtube.com', true, ['guide-links-secondary','footer','ytd-guide-signin-promo-renderer']) )
+    sites.push(new SiteClass('youtube.com', true, ['YouTube Kids','YouTube Music','YouTube Studio','More from YouTube','guide-links-secondary','footer','ytd-guide-signin-promo-renderer']) )
 
     sites.push(new SiteClass('olevod.com', true, ['pc-footers','pc-sdier','right']) )
     sites.push(new SiteClass('rophim.me', true, ['footer-elements','fade v-modal d-modal sspp-modal modal show','my-area','sspp-area is-post','app-download','denied-icon','item-v item-rate','item-v item-comment','v-line','v-rating','sspp-area is-3x2','fade modal-backdrop show','is-image','quality-notice','discuss-wrap','main_user','comment-area'],true))
