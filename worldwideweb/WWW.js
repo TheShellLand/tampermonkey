@@ -107,6 +107,7 @@ class SiteClass {
         // does the removing
         if (this.fuzzy.length > 0) {
 
+            // need to find a way to cache and hash this data
             var allTags = document.getElementsByTagName("*");
 
             for (var tag of allTags) {
@@ -158,12 +159,12 @@ function debug (log, level = 0) {
     // Adding a new site
     //sites.push(new SiteClass('domain', true/false, ['class, id, data-name, or pretty much any element.attribute.value']) )
 
-    sites.push(new SiteClass('instagram.com', true, ['_ap3a _aaco _aacw _aacx _aad6 _aadb','_aart _aaru _ai7q',]) )
+    sites.push(new SiteClass('instagram.com', true, ['xvbhtw8 x78zum5 xdt5ytf x5yr21d x1n2onr6','x1azxncr','Threads','Meta AI','contentinfo','_ap3a _aaco _aacw _aacx _aad6 _aadb','_aart _aaru _ai7q',]) )
     sites.push(new SiteClass('msn.com', true, ['cookiescript_pre_header']) )
     sites.push(new SiteClass('music.youtube.com', true, ['ytmusic-guide-signin-promo-renderer']) )
     sites.push(new SiteClass('reddit.com', true, ['promotedlink relative block']) )
     sites.push(new SiteClass('stackoverflow.com', true, ['js-freemium-cta ps-relative mt32 mb8','onetrust-consent-sdk','ch-popover','notice-sidebar-popover','announcement-banner']) )
-    sites.push(new SiteClass('youtube.com', true, ['YouTube Kids','YouTube Music','YouTube Studio','More from YouTube','guide-links-secondary','footer','ytd-guide-signin-promo-renderer']) )
+    sites.push(new SiteClass('youtube.com', true, ['Shorts','Sports','Help','Send feedback','YouTube Kids','YouTube Music','YouTube Studio','More from YouTube','guide-links-secondary','footer','ytd-guide-signin-promo-renderer']) )
 
     sites.push(new SiteClass('olevod.com', true, ['pc-footers','pc-sdier','right']) )
     sites.push(new SiteClass('rophim.me', true, ['footer-elements','fade v-modal d-modal sspp-modal modal show','my-area','sspp-area is-post','app-download','denied-icon','item-v item-rate','item-v item-comment','v-line','v-rating','sspp-area is-3x2','fade modal-backdrop show','is-image','quality-notice','discuss-wrap','main_user','comment-area'],true))
