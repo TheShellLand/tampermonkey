@@ -89,16 +89,30 @@ class SiteClass {
 
             debug(`[tampermonkey] :: hide_fuzzy :: textContainsString :: tag :: ${tag} :: string :: ${string}`, 4);
 
-            var text = tag.text;
-            if (text === undefined) {return false;}
+            var check_text = tag.text;
+            var check_innerText = tag.innerText;
+            var check_textContent = tag.textContent;
+            var check_simpleText = tag.simpleText;
 
-            var simpleText = text.simpleText;
-            if (simpleText === undefined) {return false;}
+            let textCheck = [
+                check_text,
+                //check_innerText,
+                check_textContent,
+                check_simpleText,
+            ]
 
-            if (! typeof(simpleText) === string) {return false;}
+            var foundText = undefined;
+            for (var check of textCheck) {
+                if (check !== undefined) {
+                    foundText = check;
+                    break;
+                }
+            }
 
-            if (simpleText.includes(string)) {
-                debug(`[tampermonkey] :: hide_fuzzy :: textContainsString :: FOUND :: ${simpleText}`, 3);
+            if (foundText === undefined) {return false;}
+
+            if (foundText.includes(string)) {
+                debug(`[tampermonkey] :: hide_fuzzy :: textContainsString :: FOUND :: ${foundText}`, 3);
                 return true;}
 
             return false;}
@@ -160,7 +174,7 @@ function debug (log, level = 0) {
     //sites.push(new SiteClass('domain', true/false, ['class, id, data-name, or pretty much any element.attribute.value']) )
 
     sites.push(new SiteClass('instagram.com', true, ['xvbhtw8 x78zum5 xdt5ytf x5yr21d x1n2onr6','x1azxncr','Threads','Meta AI','contentinfo','_ap3a _aaco _aacw _aacx _aad6 _aadb','_aart _aaru _ai7q',]) )
-    sites.push(new SiteClass('lazada', true, ['footer-first','footer-second','footer-fourth','lzd-header-banner','lzd-menu-labels','hotBorder','module_inner_link']) )
+    sites.push(new SiteClass('lazada', true, ['banner-wrapper','card-platform-campaign-banner-container','card-countdown','pc-download-module','banner-image','card-bottom-banner','topActionSell','topActionDownload','footer-first','footer-second','footer-third','footer-fourth','lzd-header-banner','lzd-menu-labels','hotBorder','module_inner_link']) )
     sites.push(new SiteClass('msn.com', true, ['cookiescript_pre_header']) )
     sites.push(new SiteClass('music.youtube.com', true, ['ytmusic-guide-signin-promo-renderer']) )
     sites.push(new SiteClass('reddit.com', true, ['promotedlink relative block']) )
@@ -183,7 +197,7 @@ function debug (log, level = 0) {
         for (const site of sites) {
             site.hide();
         }
-    }, 1000);
+    }, 250);
 
 
 })();
