@@ -2,7 +2,7 @@
 // @name         clean the entire world wide web
 // @description  we need a cleaner internet. here is the start.
 // @namespace    http://tampermonkey.net/
-// @version      1.1
+// @version      1.2
 // @author       https://github.com/TheShellLand/tampermonkey
 // @match        https://*/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=rophim.me
@@ -157,11 +157,11 @@ function debug (log, level = 0) {
 
     const intervalId = setInterval(() => {
         hideAllSites(sites).catch(console.error);
-    }, 250);
+    }, 2000);
 
     setTimeout(() => {
         clearInterval(intervalId);
-    }, 5000);
+    }, 2000);
 
 
 
