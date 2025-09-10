@@ -2,7 +2,7 @@
 // @name         clean the entire world wide web
 // @description  we need a cleaner internet. here is the start.
 // @namespace    http://tampermonkey.net/
-// @version      1.2
+// @version      1.3
 // @author       https://github.com/TheShellLand/tampermonkey
 // @match        https://*/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=rophim.me
@@ -141,7 +141,7 @@ function debug (log, level = 0) {
 
     sites.push(new SiteClass('olevod.com', true, ['nav-user df','pc-footers','pc-sdier','right']) )
     sites.push(new SiteClass('rophim.me', true, ['footer-elements','fade v-modal d-modal sspp-modal modal show','my-area','sspp-area is-post','app-download','denied-icon','item-v item-rate','item-v item-comment','v-line','v-rating','sspp-area is-3x2','fade modal-backdrop show','is-image','quality-notice','discuss-wrap','main_user','comment-area'],true))
-    sites.push(new SiteClass('yfsp.tv', true, ['box justify-content-end','auth-label s','bl ng-star-inserted','ss-ctn','container-p','vg-bg','login_input_emoji','list icon_3','qrcode-box','user-login','user-item user-back user-news','gg-tips-text','commentBox','sticky-block','commentsArea']) )
+    sites.push(new SiteClass('yfsp.tv', true, ['video-publisher-container','box justify-content-end','auth-label s','bl ng-star-inserted','ss-ctn','container-p','vg-bg','login_input_emoji','list icon_3','qrcode-box','user-login','user-item user-back user-news','gg-tips-text','commentBox','sticky-block','commentsArea']) )
     sites.push(new SiteClass('zhuimj', true, ['fed-foot-info fed-part-layout fed-back-whits']) )
 
     // very general blanket
