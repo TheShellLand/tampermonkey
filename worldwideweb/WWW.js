@@ -2,7 +2,7 @@
 // @name         clean the entire world wide web
 // @description  we need a cleaner internet. here is the start.
 // @namespace    http://tampermonkey.net/
-// @version      0.12
+// @version      0.13
 // @author       https://github.com/TheShellLand/tampermonkey
 // @match        https://*/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=rophim.me
@@ -131,11 +131,11 @@ class SiteClass {
                 for ( var fuzzyName of this.fuzzy ) {
                     debug(`[tampermonkey] :: ${ this.domain } :: hide_fuzzy :: fuzzyName :: ${fuzzyName}`, 4);
                     if ( attributesContainsString(tag, fuzzyName) ) {
-                        tag.remove();
                         debug(`[tampermonkey] :: ${ this.domain } :: removed :: ${tag.localName} :: ${fuzzyName}`, 1);
+                        tag.remove();
                     } else if ( textContainsString(tag, fuzzyName) ) {
-                        tag.remove();
                         debug(`[tampermonkey] :: ${ this.domain } :: removed :: ${tag.localName} :: ${fuzzyName}`, 1);
+                        tag.remove();
                     }
                 }}
         }
