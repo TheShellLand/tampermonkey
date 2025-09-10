@@ -2,9 +2,10 @@
 // @name         clean the entire world wide web
 // @description  we need a cleaner internet. here is the start.
 // @namespace    http://tampermonkey.net/
-// @version      1.6
+// @version      1.7
 // @author       https://github.com/TheShellLand/tampermonkey
 // @match        https://*/*
+// @match        http://*/*
 // @icon         https://www.google.com/s2/favicons
 // @grant        none
 // ==/UserScript==
@@ -135,14 +136,15 @@ function debug (log, level = 0) {
     sites.push(new SiteClass('msn.com', true, ['cookiescript_pre_header']) )
     sites.push(new SiteClass('music.youtube.com', true, ['ytmusic-guide-signin-promo-renderer']) )
     sites.push(new SiteClass('openvpn.com', true, ['billing-banner']) )
+    sites.push(new SiteClass('perplexity.ai', true, ['p-sm m-md ring-offsetPlus bg-base gap-md fixed bottom-0 right-0 hidden max-w-[320px] grid-cols-1 rounded-xl shadow-md ring-1 md:grid','gap-sm mb-md p-md md:gap-md md:gap-sm relative flex w-full flex-col items-center rounded-md md:flex-row rounded-xl shadow-xl ring-1 border-subtlest ring-subtlest divide-subtlest bg-superBG']) )
     sites.push(new SiteClass('reddit.com', true, ['promotedlink relative block']) )
     sites.push(new SiteClass('stackoverflow.com', true, ['js-freemium-cta ps-relative mt32 mb8','onetrust-consent-sdk','ch-popover','notice-sidebar-popover','announcement-banner']) )
     sites.push(new SiteClass('youtube.com', true, ['footer','ytd-guide-signin-promo-renderer']) )
 
     sites.push(new SiteClass('olevod.com', true, ['detailsRnak','ads-all','login_input_emoji','qrcode-box','pc-ranking','pc-section-content','pc-ads','el-row pc-container pd0','nav-user df','pc-footers','pc-sdier','right']) )
-    sites.push(new SiteClass('rophim.me', true, ['fade modal-backdrop show','footer-elements','fade v-modal d-modal sspp-modal modal show','my-area','sspp-area is-post','app-download','denied-icon','item-v item-rate','item-v item-comment','v-line','v-rating','sspp-area is-3x2','fade modal-backdrop show','is-image','quality-notice','discuss-wrap','main_user','comment-area'],true))
-    sites.push(new SiteClass('yfsp.tv', true, ['video-publisher-container','box justify-content-end','auth-label s','bl ng-star-inserted','ss-ctn','container-p','vg-bg','login_input_emoji','list icon_3','qrcode-box','user-login','user-item user-back user-news','gg-tips-text','commentBox','sticky-block','commentsArea']) )
-    sites.push(new SiteClass('zhuimj', true, ['fed-foot-info fed-part-layout fed-back-whits']) )
+    sites.push(new SiteClass('rophim.me', true, ['child-actors','child-top','fade modal-backdrop show','footer-elements','fade v-modal d-modal sspp-modal modal show','my-area','sspp-area is-post','app-download','denied-icon','item-v item-rate','item-v item-comment','v-line','v-rating','sspp-area is-3x2','fade modal-backdrop show','is-image','quality-notice','discuss-wrap','main_user','comment-area'],true))
+    sites.push(new SiteClass('yfsp.tv', true, ['page-right ng-star-inserted','video-publisher-container','box justify-content-end','auth-label s','bl ng-star-inserted','ss-ctn','container-p','vg-bg','login_input_emoji','list icon_3','qrcode-box','user-login','user-item user-back user-news','gg-tips-text','commentBox','sticky-block','commentsArea']) )
+    sites.push(new SiteClass('zhuimj', true, ['fed-navs-record','fed-foot-info','fed-foot-info fed-part-layout fed-back-whits']) )
 
     // very general blanket
     sites.push(new SiteClass('remove cookie popups', false, ['top-banner msft-content-native-ad-preview label-fix sliver-style-tuning','cookiescript_injected']) )
