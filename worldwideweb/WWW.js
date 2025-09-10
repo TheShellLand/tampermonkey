@@ -129,7 +129,7 @@ function debug (log, level = 0) {
     // Adding a new site
     //sites.push(new SiteClass('domain', true/false, ['class, id, data-name, element.attribute.value, element.text']) )
 
-    sites.push(new SiteClass('instagram.com', true, ['xvbhtw8 x78zum5 xdt5ytf x5yr21d x1n2onr6','x1azxncr','Threads','Meta AI','contentinfo','_ap3a _aaco _aacw _aacx _aad6 _aadb','_aart _aaru _ai7q',]) )
+    sites.push(new SiteClass('instagram.com', true, ['xvbhtw8 x78zum5 xdt5ytf x5yr21d x1n2onr6','x1azxncr','contentinfo','_ap3a _aaco _aacw _aacx _aad6 _aadb','_aart _aaru _ai7q',]) )
     sites.push(new SiteClass('grok.com', true, ['upsell-small']) )
     sites.push(new SiteClass('lazada', true, ['banner-container-inner','pc-banner-slider-container','pc-channel-component','banner-wrapper','card-platform-campaign-banner-container','card-countdown','pc-download-module','banner-image','card-bottom-banner','topActionSell','topActionDownload','footer-first','footer-second','footer-third','footer-fourth','lzd-header-banner','lzd-menu-labels','hotBorder','module_inner_link']) )
     sites.push(new SiteClass('msn.com', true, ['cookiescript_pre_header']) )
@@ -137,11 +137,11 @@ function debug (log, level = 0) {
     sites.push(new SiteClass('openvpn.com', true, ['billing-banner']) )
     sites.push(new SiteClass('reddit.com', true, ['promotedlink relative block']) )
     sites.push(new SiteClass('stackoverflow.com', true, ['js-freemium-cta ps-relative mt32 mb8','onetrust-consent-sdk','ch-popover','notice-sidebar-popover','announcement-banner']) )
-    sites.push(new SiteClass('youtube.com', true, ['Shorts','Sports','Help','Send feedback','YouTube Kids','YouTube Music','YouTube Studio','More from YouTube','guide-links-secondary','footer','ytd-guide-signin-promo-renderer']) )
+    sites.push(new SiteClass('youtube.com', true, ['footer','ytd-guide-signin-promo-renderer']) )
 
-    sites.push(new SiteClass('olevod.com', true, ['pc-footers','pc-sdier','right']) )
+    sites.push(new SiteClass('olevod.com', true, ['nav-user df','pc-footers','pc-sdier','right']) )
     sites.push(new SiteClass('rophim.me', true, ['footer-elements','fade v-modal d-modal sspp-modal modal show','my-area','sspp-area is-post','app-download','denied-icon','item-v item-rate','item-v item-comment','v-line','v-rating','sspp-area is-3x2','fade modal-backdrop show','is-image','quality-notice','discuss-wrap','main_user','comment-area'],true))
-    sites.push(new SiteClass('yfsp.tv', true, ['auth-label s','bl ng-star-inserted','ss-ctn','container-p','vg-bg','login_input_emoji','list icon_3','qrcode-box','user-login','user-item user-back user-news','gg-tips-text','commentBox','sticky-block','commentsArea']) )
+    sites.push(new SiteClass('yfsp.tv', true, ['box justify-content-end','auth-label s','bl ng-star-inserted','ss-ctn','container-p','vg-bg','login_input_emoji','list icon_3','qrcode-box','user-login','user-item user-back user-news','gg-tips-text','commentBox','sticky-block','commentsArea']) )
     sites.push(new SiteClass('zhuimj', true, ['fed-foot-info fed-part-layout fed-back-whits']) )
 
     // very general blanket
@@ -150,12 +150,19 @@ function debug (log, level = 0) {
 
 
 
-    // async call hide() on each SiteClass instance
+    // Periodically call hide() on each SiteClass instance
     async function hideAllSites(sites) {
         await Promise.all(sites.map(site => site.hide()));
     }
 
-    hideAllSites(sites);
+    const intervalId = setInterval(() => {
+        hideAllSites(sites).catch(console.error);
+    }, 250);
+
+    setTimeout(() => {
+        clearInterval(intervalId);
+    }, 5000);
+
 
 
 })();
