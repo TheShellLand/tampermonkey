@@ -2,7 +2,7 @@
 // @name         clean the entire world wide web
 // @description  we need a cleaner internet. here is the start.
 // @namespace    http://tampermonkey.net/
-// @version      0.15
+// @version      0.16
 // @author       https://github.com/TheShellLand/tampermonkey
 // @match        https://*/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=rophim.me
@@ -195,12 +195,13 @@ function debug (log, level = 0) {
 
 
 
-    // Periodically call hide() on each SiteClass instance
-    setTimeout(() => {
-        for (const site of sites) {
-            site.hide();
-        }
-    }, 5000);
+    // async call hide() on each SiteClass instance
+    async function hideAllSites(sites) {
+    await Promise.all(sites.map(site => site.hide()));
+        console.log('All sites hidden!');
+    }
+
+    hideAllSites(sites);
 
 
 })();
