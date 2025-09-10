@@ -2,7 +2,7 @@
 // @name         clean the entire world wide web
 // @description  we need a cleaner internet. here is the start.
 // @namespace    http://tampermonkey.net/
-// @version      0.13
+// @version      0.14
 // @author       https://github.com/TheShellLand/tampermonkey
 // @match        https://*/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=rophim.me
@@ -19,44 +19,6 @@ class SiteClass {
         this.strict_domain_match = strict_domain_match;
         this.fuzzy = fuzzy;
     }
-
-    hide_classes() {
-        for (const className of this.classes) {
-            const classSearch = document.getElementsByClassName(className);
-            if (classSearch.length) {
-                for (let i = 0; i < classSearch.length; i++) {
-                    if (classSearch[i]) {
-                        classSearch[i].remove();
-                        console.log(`[tampermonkey]:: ${ this.domain } :: removed :: class :: ${className}`);
-                    }}}}}
-
-    hide_ids() {
-        for (const idName of this.ids) {
-            const idSearch = document.getElementById(idName);
-            if (idSearch) {
-                idSearch.remove();
-                console.log(`[tampermonkey] :: ${ this.domain } :: removed :: id :: ${idName}`);
-            }}}
-
-    hide_tags() {
-        for (const tagName of this.tags) {
-            const tagSearch = document.getElementsByTagName(tagName);
-            if (tagSearch.length) {
-                for (let i = 0; i < tagSearch.length; i++) {
-                    if (tagSearch[i]) {
-                        tagSearch[i].remove();
-                        console.log(`[tampermonkey] :: ${ this.domain } :: removed :: tag :: ${tagName}`);
-                    }}}}}
-
-    hide_names() {
-        for (const nameName of this.names) {
-            const nameSearch = document.getElementsByName(nameName);
-            if (nameSearch.length) {
-                for (let i = 0; i < nameSearch.length; i++) {
-                    if (nameSearch[i]) {
-                        nameSearch[i].remove();
-                        console.log(`[tampermonkey] :: ${ this.domain } :: removed :: name :: ${nameName}`);
-                    }}}}}
 
     hide_fuzzy() {
 
@@ -140,6 +102,44 @@ class SiteClass {
                 }}
         }
     }
+
+    hide_classes() {
+        for (const className of this.classes) {
+            const classSearch = document.getElementsByClassName(className);
+            if (classSearch.length) {
+                for (let i = 0; i < classSearch.length; i++) {
+                    if (classSearch[i]) {
+                        classSearch[i].remove();
+                        console.log(`[tampermonkey]:: ${ this.domain } :: removed :: class :: ${className}`);
+                    }}}}}
+
+    hide_ids() {
+        for (const idName of this.ids) {
+            const idSearch = document.getElementById(idName);
+            if (idSearch) {
+                idSearch.remove();
+                console.log(`[tampermonkey] :: ${ this.domain } :: removed :: id :: ${idName}`);
+            }}}
+
+    hide_tags() {
+        for (const tagName of this.tags) {
+            const tagSearch = document.getElementsByTagName(tagName);
+            if (tagSearch.length) {
+                for (let i = 0; i < tagSearch.length; i++) {
+                    if (tagSearch[i]) {
+                        tagSearch[i].remove();
+                        console.log(`[tampermonkey] :: ${ this.domain } :: removed :: tag :: ${tagName}`);
+                    }}}}}
+
+    hide_names() {
+        for (const nameName of this.names) {
+            const nameSearch = document.getElementsByName(nameName);
+            if (nameSearch.length) {
+                for (let i = 0; i < nameSearch.length; i++) {
+                    if (nameSearch[i]) {
+                        nameSearch[i].remove();
+                        console.log(`[tampermonkey] :: ${ this.domain } :: removed :: name :: ${nameName}`);
+                    }}}}}
 
     hide() {
 
