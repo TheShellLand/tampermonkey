@@ -2,7 +2,7 @@
 // @name         clean the entire world wide web
 // @description  we need a cleaner internet. here is the start.
 // @namespace    http://tampermonkey.net/
-// @version      0.16
+// @version      1.0
 // @author       https://github.com/TheShellLand/tampermonkey
 // @match        https://*/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=rophim.me
@@ -20,7 +20,7 @@ class SiteClass {
         this.fuzzy = fuzzy;
     }
 
-    hide_fuzzy() {
+    async hide_fuzzy() {
 
         function attributesContainsString(tag, string) {
             // check the element.attributes if it contains the string
@@ -82,64 +82,23 @@ class SiteClass {
 
         // does the removing
         if (this.fuzzy.length > 0) {
+            const allTags = Array.from(document.body.getElementsByTagName("*"));
 
-            // need to find a way to cache and hash this data
-            //var allTags = document.getElementsByTagName("*");
-            var allTags = document.body.getElementsByTagName("*");
-
-            for (var tag of allTags) {
-                debug(`[tampermonkey] :: ${ this.domain } :: hide_fuzzy :: tag :: ${tag}`, 4);
-
-                for ( var fuzzyName of this.fuzzy ) {
-                    debug(`[tampermonkey] :: ${ this.domain } :: hide_fuzzy :: fuzzyName :: ${fuzzyName}`, 4);
-                    if ( attributesContainsString(tag, fuzzyName) ) {
-                        debug(`[tampermonkey] :: ${ this.domain } :: removed :: ${tag.localName} :: ${fuzzyName}`, 1);
-                        tag.remove();
-                    } else if ( textContainsString(tag, fuzzyName) ) {
+            // Create one promise for each fuzzy term
+            const fuzzyPromises = this.fuzzy.map(fuzzyName => {
+                return Promise.all(allTags.map(async tag => {
+                    if (attributesContainsString(tag, fuzzyName) || textContainsString(tag, fuzzyName)) {
                         debug(`[tampermonkey] :: ${ this.domain } :: removed :: ${tag.localName} :: ${fuzzyName}`, 1);
                         tag.remove();
                     }
-                }}
+                }));
+            });
+
+            // Wait for all fuzzy promises (and thus, all tag removals)
+            await Promise.all(fuzzyPromises);
         }
     }
 
-    hide_classes() {
-        for (const className of this.classes) {
-            const classSearch = document.getElementsByClassName(className);
-            if (classSearch.length) {
-                for (let i = 0; i < classSearch.length; i++) {
-                    if (classSearch[i]) {
-                        classSearch[i].remove();
-                        console.log(`[tampermonkey]:: ${ this.domain } :: removed :: class :: ${className}`);
-                    }}}}}
-
-    hide_ids() {
-        for (const idName of this.ids) {
-            const idSearch = document.getElementById(idName);
-            if (idSearch) {
-                idSearch.remove();
-                console.log(`[tampermonkey] :: ${ this.domain } :: removed :: id :: ${idName}`);
-            }}}
-
-    hide_tags() {
-        for (const tagName of this.tags) {
-            const tagSearch = document.getElementsByTagName(tagName);
-            if (tagSearch.length) {
-                for (let i = 0; i < tagSearch.length; i++) {
-                    if (tagSearch[i]) {
-                        tagSearch[i].remove();
-                        console.log(`[tampermonkey] :: ${ this.domain } :: removed :: tag :: ${tagName}`);
-                    }}}}}
-
-    hide_names() {
-        for (const nameName of this.names) {
-            const nameSearch = document.getElementsByName(nameName);
-            if (nameSearch.length) {
-                for (let i = 0; i < nameSearch.length; i++) {
-                    if (nameSearch[i]) {
-                        nameSearch[i].remove();
-                        console.log(`[tampermonkey] :: ${ this.domain } :: removed :: name :: ${nameName}`);
-                    }}}}}
 
     hide() {
 
@@ -148,10 +107,6 @@ class SiteClass {
                 return;}
         }
 
-        //this.hide_classes();
-        //this.hide_ids();
-        //this.hide_tags();
-        //this.hide_names();
         this.hide_fuzzy();
     }
 
@@ -197,8 +152,7 @@ function debug (log, level = 0) {
 
     // async call hide() on each SiteClass instance
     async function hideAllSites(sites) {
-    await Promise.all(sites.map(site => site.hide()));
-        console.log('All sites hidden!');
+        await Promise.all(sites.map(site => site.hide()));
     }
 
     hideAllSites(sites);
