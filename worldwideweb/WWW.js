@@ -2,7 +2,7 @@
 // @name         clean the entire world wide web
 // @description  we need a cleaner internet. here is the start.
 // @namespace    http://tampermonkey.net/
-// @version      1.9
+// @version      1.10
 // @author       https://github.com/TheShellLand/tampermonkey
 // @match        https://*/*
 // @match        http://*/*
@@ -24,9 +24,9 @@ class SiteClass {
     async hide_fuzzy() {
 
         function attributesContainsString(tag, string) {
-            // check the element.attributes if it contains the string
+            // check the element.attributes if it contains the string //
 
-            debug(`[tampermonkey] :: hide_fuzzy :: attributesContainsString :: tag :: ${tag} :: string :: ${string}`, 4);
+            debug(`[tampermonkey] :: hide_fuzzy :: attributesContainsString :: tag.attributes :: ${tag.attributes} :: string :: ${string}`, 4);
 
             var attributes = tag.attributes;
             if (attributes === undefined) {return false;}
@@ -41,16 +41,16 @@ class SiteClass {
                 if (typeof(value) === undefined) {continue;}
 
                 if (value.includes(string)) {
-                    debug(`[tampermonkey] :: hide_fuzzy :: attributesContainsString :: FOUND :: ${attr}`, 3);
+                    debug(`[tampermonkey] :: hide_fuzzy :: attributesContainsString :: FOUND :: ${value}`, 3);
                     return true;}}
 
             return false;}
 
 
         function textContainsString(tag, string) {
-            // check the element.text if it contains the string
+            // check the element.text if it contains the string //
 
-            debug(`[tampermonkey] :: hide_fuzzy :: textContainsString :: tag :: ${tag} :: string :: ${string}`, 4);
+            debug(`[tampermonkey] :: hide_fuzzy :: textContainsString :: tag.text :: ${tag.text} :: string :: ${string}`, 4);
 
             var check_text = tag.text;
             var check_innerText = tag.innerText;
@@ -59,8 +59,8 @@ class SiteClass {
 
             let textCheck = [
                 check_text,
-                check_simpleText,
-                check_textContent,
+                //check_simpleText,
+                //check_textContent,
                 //check_innerText,
             ]
 
@@ -81,21 +81,38 @@ class SiteClass {
             return false;}
 
 
-        // does the removing
+        function styleContainsString(tag, string) {
+            // check the element.style if it contains the string //
+
+            debug(`[tampermonkey] :: hide_fuzzy :: styleContainsString :: tag.style :: ${tag.style} :: string :: ${string}`, 4);
+
+            var check_cssText = tag.style.cssText;
+
+            if (check_cssText === "") {return false;}
+
+            if (typeof(check_cssText) === 'string') {
+                if (check_cssText.includes(string)) {
+                    debug(`[tampermonkey] :: hide_fuzzy :: styleContainsString :: FOUND :: ${check_cssText}`, 3);
+                    return true;}
+            }
+
+            return false;}
+
+
+        // this does the removing //
         if (this.fuzzy.length > 0) {
             const allTags = Array.from(document.body.getElementsByTagName("*"));
 
             // Create one promise for each fuzzy term
             const fuzzyPromises = this.fuzzy.map(fuzzyName => {
                 return Promise.all(allTags.map(async tag => {
-                    if (attributesContainsString(tag, fuzzyName) || textContainsString(tag, fuzzyName)) {
+                    if (attributesContainsString(tag, fuzzyName) || textContainsString(tag, fuzzyName) || styleContainsString(tag, fuzzyName)) {
                         debug(`[tampermonkey] :: ${ this.domain } :: removed :: ${tag.localName} :: ${fuzzyName}`, 1);
                         tag.remove();
                     }
                 }));
             });
 
-            // Wait for all fuzzy promises (and thus, all tag removals)
             await Promise.all(fuzzyPromises);
         }
     }
@@ -129,6 +146,8 @@ function debug (log, level = 0) {
 
     // Adding a new site
     //sites.push(new SiteClass('domain', true/false, ['class, id, data-name, element.attribute.value, element.text']) )
+    //sites.push(new SiteClass('', true, ['']) )
+
 
     sites.push(new SiteClass('instagram.com', true, ['xvbhtw8 x78zum5 xdt5ytf x5yr21d x1n2onr6','x1azxncr','contentinfo','_ap3a _aaco _aacw _aacx _aad6 _aadb','_aart _aaru _ai7q',]) )
     sites.push(new SiteClass('grok.com', true, ['upsell-small']) )
@@ -139,6 +158,7 @@ function debug (log, level = 0) {
     sites.push(new SiteClass('perplexity.ai', true, ['p-sm m-md ring-offsetPlus bg-base gap-md fixed bottom-0 right-0 hidden max-w-[320px] grid-cols-1 rounded-xl shadow-md ring-1 md:grid','gap-sm mb-md p-md md:gap-md md:gap-sm relative flex w-full flex-col items-center rounded-md md:flex-row rounded-xl shadow-xl ring-1 border-subtlest ring-subtlest divide-subtlest bg-superBG']) )
     sites.push(new SiteClass('reddit.com', true, ['promotedlink relative block']) )
     sites.push(new SiteClass('stackoverflow.com', true, ['js-freemium-cta ps-relative mt32 mb8','onetrust-consent-sdk','ch-popover','notice-sidebar-popover','announcement-banner']) )
+    sites.push(new SiteClass('twitch.tv', true, ['subscribe-button']) )
     sites.push(new SiteClass('youtube.com', true, ['footer','ytd-guide-signin-promo-renderer']) )
 
     sites.push(new SiteClass('olevod.com', true, ['detailsRnak','ads-all','login_input_emoji','qrcode-box','pc-ranking','pc-section-content','pc-ads','el-row pc-container pd0','nav-user df','pc-footers','pc-sdier','right']) )
