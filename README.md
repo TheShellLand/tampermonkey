@@ -6,4 +6,10 @@ contributers and pull requests will be nice.
 
 help create a cleaner world wide web
 
-install tampermonkey extension here: https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo 
+### install tampermonkey extension here: 
+
+https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo 
+
+### install script :
+
+https://github.com/TheShellLand/tampermonkey/raw/refs/heads/main/worldwideweb/WWW.js
