@@ -2,7 +2,7 @@
 // @name         clean the entire world wide web
 // @description  we need a cleaner internet. here is the start.
 // @namespace    http://tampermonkey.net/
-// @version      1.14
+// @version      1.15
 // @author       https://github.com/TheShellLand/tampermonkey
 // @match        https://*/*
 // @match        http://*/*
@@ -11,8 +11,8 @@
 // ==/UserScript==
 
 
-const DEBUG = 2;
-
+var DEBUG = 2;
+var AGGRESSION = 5;
 
 class SiteClass {
     constructor(domain = 'generic', strict_domain_match = true, fuzzy = []) {
@@ -161,7 +161,7 @@ function debug (log, level = 0) {
     sites.push(new SiteClass('stackoverflow.com', true, ['js-freemium-cta ps-relative mt32 mb8','onetrust-consent-sdk','ch-popover','notice-sidebar-popover','announcement-banner']) )
     sites.push(new SiteClass('twitch.tv', true, ['upsell','tw-root--theme-light','prime-offers-icon','top-nav-get-bits-button','side-nav','subscribe-button']) )
     sites.push(new SiteClass('vietjetair.com', true, ['prime','slick-slider','banner1-1723791781611.jpg','aip-chat-box-subpanel','aip-chat-window','aip-chat-box','cw_hello_message','Have you know about Vietjet SkyJoy','bannertrangdangnhaptaikhoanskyjoy']) )
-    sites.push(new SiteClass('youtube.com', true, ['footer','ytd-guide-signin-promo-renderer']) )
+    sites.push(new SiteClass('youtube.com', true, ['shortsLockupViewModel','Shorts','footer','ytd-guide-signin-promo-renderer']) )
 
     sites.push(new SiteClass('olevod.com', true, ['detailsRnak','ads-all','login_input_emoji','qrcode-box','pc-ranking','pc-section-content','pc-ads','el-row pc-container pd0','nav-user df','pc-footers','pc-sdier','right']) )
     sites.push(new SiteClass('rophim.me', true, ['child-suggest','child-actors','child-top','fade modal-backdrop show','footer-elements','fade v-modal d-modal sspp-modal modal show','my-area','sspp-area is-post','app-download','denied-icon','item-v item-rate','item-v item-comment','v-line','v-rating','sspp-area is-3x2','fade modal-backdrop show','is-image','quality-notice','discuss-wrap','main_user','comment-area'],true))
@@ -174,19 +174,48 @@ function debug (log, level = 0) {
 
 
 
+
+
     // Periodically call hide() on each SiteClass instance
     async function hideAllSites(sites) {
         await Promise.all(sites.map(site => site.hide()));
     }
 
-//    hideAllSites(sites).catch(console.error);
-
-    const intervalId = setInterval(() => {
+    if (AGGRESSION === 1) {
         hideAllSites(sites).catch(console.error);
-    }, 2000);
-    setTimeout(() => {
-        clearInterval(intervalId);
-    }, 10000);
+    }
+
+    if (AGGRESSION === 5) {
+        const intervalId = setInterval(() => {
+            hideAllSites(sites).catch(console.error);
+        }, 2000);
+        setTimeout(() => {
+            clearInterval(intervalId);
+            debug(`[tampermonkey] :: done`)
+        }, 10000);
+    }
+
+    if (AGGRESSION === 6) {
+        setInterval(() => {
+            hideAllSites(sites).catch(console.error);
+        }, 2000);
+    }
+
+    if (AGGRESSION === 9) {
+        hideAllSites(sites).catch(console.error);
+        window.navigation.addEventListener("navigate", () => {
+            hideAllSites(sites).catch(console.error);
+        });
+    }
+
+    if (AGGRESSION === 10) {
+        const observer = new MutationObserver(function(mutationsList, observer) {
+            hideAllSites(sites).catch(console.error);
+            debug(`[tampermonkey] :: done`)
+        });
+        observer.observe(document.body, { childList: true, subtree: true });
+    }
+
 
 
 
