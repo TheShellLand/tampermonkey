@@ -12,7 +12,7 @@
 
 
 var DEBUG = 2;
-var AGGRESSION = 5;
+var AGGRESSION = 7;
 
 class SiteClass {
     constructor(domain = 'generic', strict_domain_match = true, fuzzy = []) {
@@ -185,6 +185,12 @@ function debug (log, level = 0) {
         hideAllSites(sites).catch(console.error);
     }
 
+    if (AGGRESSION === 2) {
+        window.navigation.addEventListener("navigate", () => {
+            hideAllSites(sites).catch(console.error);
+        });
+    }
+
     if (AGGRESSION === 5) {
         const intervalId = setInterval(() => {
             hideAllSites(sites).catch(console.error);
@@ -192,20 +198,35 @@ function debug (log, level = 0) {
         setTimeout(() => {
             clearInterval(intervalId);
             debug(`[tampermonkey] :: done`)
-        }, 10000);
+        }, 4000);
     }
 
     if (AGGRESSION === 6) {
-        setInterval(() => {
-            hideAllSites(sites).catch(console.error);
-        }, 2000);
-    }
+        // doesnt really work
 
-    if (AGGRESSION === 9) {
-        hideAllSites(sites).catch(console.error);
         window.navigation.addEventListener("navigate", () => {
             hideAllSites(sites).catch(console.error);
         });
+
+        const intervalId = setInterval(() => {
+            hideAllSites(sites).catch(console.error);
+        }, 2000);
+        setTimeout(() => {
+            clearInterval(intervalId);
+            debug(`[tampermonkey] :: done`)
+        }, 4000);
+    }
+
+    if (AGGRESSION === 7) {
+        setInterval(() => {
+            hideAllSites(sites).catch(console.error);
+        }, 5000);
+    }
+
+    if (AGGRESSION === 8) {
+        setInterval(() => {
+            hideAllSites(sites).catch(console.error);
+        }, 1000);
     }
 
     if (AGGRESSION === 10) {
