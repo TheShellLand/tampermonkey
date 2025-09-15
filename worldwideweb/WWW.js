@@ -2,7 +2,7 @@
 // @name         clean the entire world wide web
 // @description  we need a cleaner internet. here is the start.
 // @namespace    http://tampermonkey.net/
-// @version      1.20
+// @version      1.21
 // @author       https://github.com/TheShellLand/tampermonkey
 // @match        https://*/*
 // @match        http://*/*
@@ -157,7 +157,7 @@ function debug (log, level = 0) {
     sites.push(new SiteClass('music.youtube.com', true, ['ytmusic-guide-signin-promo-renderer']) )
     sites.push(new SiteClass('openvpn.com', true, ['dns-log-promotion','log-streaming-promotion','location-context-promotion','widgetOnLoad','portal-notification','billing-banner']) )
     sites.push(new SiteClass('perplexity.ai', true, ['gap-sm mb-md p-md md:gap-md relative flex w-full flex-col items-center rounded-md md:flex-row rounded-xl shadow-xl ring-1 border-subtlest ring-subtlest divide-subtlest bg-superBG','-mt-md col-span-full inline-flex flex-wrap items-center justify-center opacity-100 border-subtlest ring-subtlest divide-subtlest bg-transparent','p-sm m-md ring-offsetPlus bg-base gap-md fixed bottom-0 right-0 hidden max-w-[320px] grid-cols-1 rounded-xl shadow-md ring-1 md:grid','gap-sm mb-md p-md md:gap-md md:gap-sm relative flex w-full flex-col items-center rounded-md md:flex-row rounded-xl shadow-xl ring-1 border-subtlest ring-subtlest divide-subtlest bg-superBG']) )
-    sites.push(new SiteClass('reddit.com', true, ['promotedlink','advertise-button','legal-links','full-comments-page-ad-link','promotedlink relative block']) )
+    sites.push(new SiteClass('reddit.com', true, ['promoted-label','promotedlink','advertise-button','legal-links','full-comments-page-ad-link','promotedlink relative block']) )
     sites.push(new SiteClass('stackoverflow.com', true, ['js-freemium-cta ps-relative mt32 mb8','onetrust-consent-sdk','ch-popover','notice-sidebar-popover','announcement-banner']) )
     sites.push(new SiteClass('twitch.tv', true, ['upsell','tw-root--theme-light','prime-offers-icon','top-nav-get-bits-button','side-nav','subscribe-button']) )
     sites.push(new SiteClass('vietjetair.com', true, ['prime','slick-slider','banner1-1723791781611.jpg','aip-chat-box-subpanel','aip-chat-window','aip-chat-box','cw_hello_message','Have you know about Vietjet SkyJoy','bannertrangdangnhaptaikhoanskyjoy']) )
@@ -169,7 +169,7 @@ function debug (log, level = 0) {
     sites.push(new SiteClass('zhuimj', true, ['fed-navs-record','fed-foot-info','fed-foot-info fed-part-layout fed-back-whits']) )
 
     // very general blanket
-    sites.push(new SiteClass('remove cookie popups', false, ['top-banner msft-content-native-ad-preview label-fix sliver-style-tuning','cookiescript_injected']) )
+    sites.push(new SiteClass('remove cookie popups', false, ['gdpr','top-banner msft-content-native-ad-preview label-fix sliver-style-tuning','cookiescript_injected']) )
     sites.push(new SiteClass('big dumpster fire', false, ['pc-content pc-ads','pc-home-swiper','pc-mask swiper-mask-circle','pc-home-swiper','inner position-relative w-100 h-100','inner position-relative w-100 h-100 ng-star-inserted','tab-live','vg-b','ads-mask-box','top-banner msft-content-native-ad-preview label-fix sliver-style-tuning','button button-medium button-outline-weak button button-medium button-outline-weak inline-block text-center max-w-full flex items-center button-promotion--icon-gradient button-promotion--full-gradient flex items-center gap-2','flex flex-1 flex-nowrap text-left ml-0 navigation-link-header-group-link navigation-link-header-group-link--force-min-block-size items-start','navigation-item w-full px-3 mb-0.5 navigation-link-header-group navigation-link-header-group--force-min-block-size navigation-link-header-group--expandable']) )
 
 
