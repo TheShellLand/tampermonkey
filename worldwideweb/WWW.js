@@ -2,7 +2,7 @@
 // @name         clean the entire world wide web
 // @description  we need a cleaner internet. here is the start.
 // @namespace    http://tampermonkey.net/
-// @version      1.18
+// @version      1.19
 // @author       https://github.com/TheShellLand/tampermonkey
 // @match        https://*/*
 // @match        http://*/*
@@ -12,7 +12,7 @@
 
 
 var DEBUG = 2;
-var AGGRESSION = 7;
+var AGGRESSION = 6;
 
 class SiteClass {
     constructor(domain = 'generic', strict_domain_match = true, fuzzy = []) {
