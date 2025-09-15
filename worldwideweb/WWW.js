@@ -2,7 +2,7 @@
 // @name         clean the entire world wide web
 // @description  we need a cleaner internet. here is the start.
 // @namespace    http://tampermonkey.net/
-// @version      1.17
+// @version      1.18
 // @author       https://github.com/TheShellLand/tampermonkey
 // @match        https://*/*
 // @match        http://*/*
@@ -155,7 +155,7 @@ function debug (log, level = 0) {
     sites.push(new SiteClass('lazada', true, ['banner-container-inner','pc-banner-slider-container','pc-channel-component','banner-wrapper','card-platform-campaign-banner-container','card-countdown','pc-download-module','banner-image','card-bottom-banner','topActionSell','topActionDownload','footer-first','footer-second','footer-third','footer-fourth','lzd-header-banner','lzd-menu-labels','hotBorder','module_inner_link']) )
     sites.push(new SiteClass('msn.com', true, ['cookiescript_pre_header']) )
     sites.push(new SiteClass('music.youtube.com', true, ['ytmusic-guide-signin-promo-renderer']) )
-    sites.push(new SiteClass('openvpn.com', true, ['portal-notification','billing-banner']) )
+    sites.push(new SiteClass('openvpn.com', true, ['dns-log-promotion','log-streaming-promotion','location-context-promotion','widgetOnLoad','portal-notification','billing-banner']) )
     sites.push(new SiteClass('perplexity.ai', true, ['gap-sm mb-md p-md md:gap-md relative flex w-full flex-col items-center rounded-md md:flex-row rounded-xl shadow-xl ring-1 border-subtlest ring-subtlest divide-subtlest bg-superBG','-mt-md col-span-full inline-flex flex-wrap items-center justify-center opacity-100 border-subtlest ring-subtlest divide-subtlest bg-transparent','p-sm m-md ring-offsetPlus bg-base gap-md fixed bottom-0 right-0 hidden max-w-[320px] grid-cols-1 rounded-xl shadow-md ring-1 md:grid','gap-sm mb-md p-md md:gap-md md:gap-sm relative flex w-full flex-col items-center rounded-md md:flex-row rounded-xl shadow-xl ring-1 border-subtlest ring-subtlest divide-subtlest bg-superBG']) )
     sites.push(new SiteClass('reddit.com', true, ['promotedlink relative block']) )
     sites.push(new SiteClass('stackoverflow.com', true, ['js-freemium-cta ps-relative mt32 mb8','onetrust-consent-sdk','ch-popover','notice-sidebar-popover','announcement-banner']) )
