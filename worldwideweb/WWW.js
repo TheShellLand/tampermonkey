@@ -2,7 +2,7 @@
 // @name         clean the entire world wide web
 // @description  we need a cleaner internet. here is the start.
 // @namespace    http://tampermonkey.net/
-// @version      1.24
+// @version      1.25
 // @author       https://github.com/TheShellLand/tampermonkey
 // @match        https://*/*
 // @match        http://*/*
@@ -148,7 +148,7 @@ function debug (log, level = 0) {
     //sites.push(new SiteClass('domain', true/false, ['class, id, data-name, element.attribute.value, element.text']) )
     //sites.push(new SiteClass('', true, ['']) )
 
-    sites.push(new SiteClass('sourceforge.net', true, ['trunc-eligible','newsletter-floating']) )
+    sites.push(new SiteClass('sourceforge.net', true, ['trunc-eligible','newsletter-floating','utm_campaign']) )
 
     sites.push(new SiteClass('deviantart.com', true, ['PXXBK','D-m7S','_1YQoK','f-14-reg','dreamup','offers-assets','Support and get access to my work','Browse My Shop','_1B1O9','_2AI4s','DealerAdIframe','_3i9c9','_3272G _3U8hI v0vmd _2Ee-T','_1LNZO XN05V _2Och2 _2HvYQ _1rFXc _3Cbmi','core-membership','Core Membership','Treat yourself','Join the world']) )
     sites.push(new SiteClass('instagram.com', true, ['xvbhtw8 x78zum5 xdt5ytf x5yr21d x1n2onr6','x1azxncr','contentinfo','_ap3a _aaco _aacw _aacx _aad6 _aadb','_aart _aaru _ai7q',]) )
