@@ -2,7 +2,7 @@
 // @name         clean the entire world wide web
 // @description  we need a cleaner internet. here is the start.
 // @namespace    http://tampermonkey.net/
-// @version      1.26
+// @version      1.27
 // @author       https://github.com/TheShellLand/tampermonkey
 // @match        https://*/*
 // @match        http://*/*
@@ -160,6 +160,7 @@ function debug (log, level = 0) {
     sites.push(new SiteClass('reddit.com', true, ['promoted-label','promotedlink','advertise-button','legal-links','full-comments-page-ad-link','promotedlink relative block']) )
     sites.push(new SiteClass('stackoverflow.com', true, ['js-freemium-cta ps-relative mt32 mb8','onetrust-consent-sdk','ch-popover','notice-sidebar-popover','announcement-banner']) )
     sites.push(new SiteClass('sourceforge.net', true, ['trunc-eligible','newsletter-floating','utm_campaign']) )
+    sites.push(new SiteClass('trip.com', true, ['dialog-mask','adc_contain','new-tcp-online-adc','online-cross-sale','extChrome_Card_id','mc-hd__mobile','u-cross-rentcar-x','u-cross-pickup-x','u-cross-customtrip-x','extNps_Card_id','contentinfo','CrossHotelBanner_div_iddata-ig-check','faq_Card_idnotHidden',]) )
     sites.push(new SiteClass('twitch.tv', true, ['upsell','tw-root--theme-light','prime-offers-icon','top-nav-get-bits-button','side-nav','subscribe-button']) )
     sites.push(new SiteClass('vietjetair.com', true, ['prime','slick-slider','banner1-1723791781611.jpg','aip-chat-box-subpanel','aip-chat-window','aip-chat-box','cw_hello_message','Have you know about Vietjet SkyJoy','bannertrangdangnhaptaikhoanskyjoy']) )
     sites.push(new SiteClass('youtube.com', true, ['shortsLockupViewModel','Shorts','footer','ytd-guide-signin-promo-renderer']) )
