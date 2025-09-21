@@ -2,7 +2,7 @@
 // @name         clean the entire world wide web
 // @description  we need a cleaner internet. here is the start.
 // @namespace    http://tampermonkey.net/
-// @version      1.34
+// @version      1.35
 // @author       https://github.com/TheShellLand/tampermonkey
 // @match        https://*/*
 // @match        http://*/*
@@ -222,6 +222,7 @@ function debug (log, level = 0) {
 
     sites.push(new SiteClass('agoda.com', true, ['full-funnel-banner-container','footer-copyright-section','footer-links-section',]) )
     sites.push(new SiteClass('booking.com', true, ['footer-lists']) )
+    sites.push(new SiteClass('delta.com', true, ['Preference banner']) )
     sites.push(new SiteClass('deviantart.com', true, ['PXXBK','D-m7S','_1YQoK','f-14-reg','dreamup','offers-assets','Support and get access to my work','Browse My Shop','_1B1O9','_2AI4s','DealerAdIframe','_3i9c9','_3272G _3U8hI v0vmd _2Ee-T','_1LNZO XN05V _2Och2 _2HvYQ _1rFXc _3Cbmi','core-membership','Core Membership','Treat yourself','Join the world']) )
     sites.push(new SiteClass('grok.com', true, ['w-full flex justify-center','imagine-banner.png','upsell-small']) )
     sites.push(new SiteClass('instagram.com', true, ['xvbhtw8 x78zum5 xdt5ytf x5yr21d x1n2onr6','x1azxncr','contentinfo','_ap3a _aaco _aacw _aacx _aad6 _aadb','_aart _aaru _ai7q',]) )
