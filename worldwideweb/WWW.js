@@ -239,7 +239,7 @@ function debug (log, level = 0) {
     sites.push(new SiteClass('trip.com', true, ['dialog-mask','adc_contain','new-tcp-online-adc','online-cross-sale','extChrome_Card_id','mc-hd__mobile','u-cross-rentcar-x','u-cross-pickup-x','u-cross-customtrip-x','extNps_Card_id','contentinfo','CrossHotelBanner_div_iddata-ig-check','faq_Card_idnotHidden',]) )
     sites.push(new SiteClass('twitch.tv', true, ['upsell','tw-root--theme-light','prime-offers-icon','top-nav-get-bits-button','side-nav','subscribe-button']) )
     sites.push(new SiteClass('vietjetair.com', true, ['prime','slick-slider','banner1-1723791781611.jpg','aip-chat-box-subpanel','aip-chat-window','aip-chat-box','cw_hello_message','Have you know about Vietjet SkyJoy','bannertrangdangnhaptaikhoanskyjoy']) )
-    sites.push(new SiteClass('youtube.com', true, ['/shorts/','shortsLockupViewModel','Shorts','footer','ytd-guide-signin-promo-renderer']) )
+    sites.push(new SiteClass('youtube.com', true, ['comment-item-section','/shorts/','shortsLockupViewModel','Shorts','footer','ytd-guide-signin-promo-renderer']) )
 
     sites.push(new SiteClass('olevod.com', true, ['detailsRnak','ads-all','login_input_emoji','qrcode-box','pc-ranking','pc-section-content','pc-ads','el-row pc-container pd0','nav-user df','pc-footers','pc-sdier','right']) )
     sites.push(new SiteClass('rophim.me', true, ['child-suggest','child-actors','child-top','fade modal-backdrop show','footer-elements','fade v-modal d-modal sspp-modal modal show','my-area','sspp-area is-post','app-download','denied-icon','item-v item-rate','item-v item-comment','v-line','v-rating','sspp-area is-3x2','fade modal-backdrop show','is-image','quality-notice','discuss-wrap','main_user','comment-area'],true))
