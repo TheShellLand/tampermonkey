@@ -2,7 +2,7 @@
 // @name         clean the entire world wide web
 // @description  we need a cleaner internet. here is the start.
 // @namespace    http://tampermonkey.net/
-// @version      1.44
+// @version      1.45
 // @author       https://github.com/TheShellLand/tampermonkey
 // @match        https://*/*
 // @match        http://*/*
@@ -245,6 +245,7 @@ function debug (log, level = 0) {
     sites.push(new SiteClass('rophim', true, ['close-it','vpromolink','sspp-area','child-suggest','child-actors','child-top','fade modal-backdrop show','footer-elements','fade v-modal d-modal sspp-modal modal show','my-area','sspp-area is-post','app-download','denied-icon','item-v item-rate','item-v item-comment','v-line','v-rating','sspp-area is-3x2','fade modal-backdrop show','is-image','quality-notice','discuss-wrap','main_user','comment-area'],true))
     sites.push(new SiteClass('yfsp.tv', true, ['vg-pause-f','vg-vvk-p ng-star-inserted','vg-tips-text','vg-learn-more','vg-pause-close-font','footer-ctn d-flex','item input','report-icon','iconlixianhuancun1','page-right ng-star-inserted','video-publisher-container','box justify-content-end','auth-label s','bl ng-star-inserted','ss-ctn','container-p','vg-bg','login_input_emoji','list icon_3','qrcode-box','user-login','user-item user-back user-news','gg-tips-text','commentBox','sticky-block','commentsArea']) )
     sites.push(new SiteClass('zhuimj', true, ['fed-navs-record','fed-foot-info','fed-foot-info fed-part-layout fed-back-whits']) )
+    sites.push(new SiteClass('0123movie.net', true, ['list-rel','container-fluid text-bg-dark mt-5']) )
 
     // very general blanket wiper
     sites.push(new SiteClass('remove cookie popups', false, ['cookie consent','cookieMsgCls','a46d1b942-78b2-4070-bfb4-0aac57c89202','gdpr','top-banner msft-content-native-ad-preview label-fix sliver-style-tuning','cookiescript_injected']) )
