@@ -11,8 +11,8 @@
 // ==/UserScript==
 
 
-var DEBUG = 2;
-var AGGRESSION = 5;
+var DEBUG = 1;
+var AGGRESSION = 7;
 
 class SiteClass {
     constructor(domain = 'generic', strict_domain_match = true, fuzzy = []) {
@@ -26,8 +26,6 @@ class SiteClass {
         function attributesContainsString(tag, string) {
             // check the element.attributes if it contains the string //
 
-            debug(`[tampermonkey] :: hide_fuzzy :: attributesContainsString :: tag.attributes :: ${tag.attributes} :: string :: ${string}`, 4);
-
             var attributes = tag.attributes;
             if (attributes === undefined) {return false;}
 
@@ -36,12 +34,12 @@ class SiteClass {
 
                 var attr = attrList[attrItem];
                 var value = attr.value;
-                debug(`[tampermonkey] :: hide_fuzzy :: attributesContainsString :: value :: ${value}`, 4);
+                debug(`[tampermonkey] :: hide_fuzzy :: attributesContainsString :: value :: ${tag.attributes} :: ${value}`, 4);
 
                 if (typeof(value) === undefined) {continue;}
 
                 if (value.includes(string)) {
-                    debug(`[tampermonkey] :: hide_fuzzy :: attributesContainsString :: FOUND :: ${value}`, 3);
+                    debug(`[tampermonkey] :: hide_fuzzy :: attributesContainsString :: FOUND :: ${string} :: ${value}`, 3);
                     return true;}}
 
             return false;}
@@ -49,8 +47,6 @@ class SiteClass {
 
         function textContainsString(tag, string) {
             // check the element.text if it contains the string //
-
-            debug(`[tampermonkey] :: hide_fuzzy :: textContainsString :: tag.text :: ${tag.text} :: string :: ${string}`, 4);
 
             var check_text = tag.text;
             var check_innerText = tag.innerText;
@@ -75,7 +71,7 @@ class SiteClass {
             if (foundText === undefined) {return false;}
 
             if (foundText.includes(string)) {
-                debug(`[tampermonkey] :: hide_fuzzy :: textContainsString :: FOUND :: ${foundText}`, 3);
+                debug(`[tampermonkey] :: hide_fuzzy :: textContainsString :: FOUND :: ${string} :: ${foundText}`, 3);
                 return true;}
 
             return false;}
@@ -84,15 +80,13 @@ class SiteClass {
         function styleContainsString(tag, string) {
             // check the element.style if it contains the string //
 
-            debug(`[tampermonkey] :: hide_fuzzy :: styleContainsString :: tag.style :: ${tag.style} :: string :: ${string}`, 4);
-
             var check_cssText = tag.style.cssText;
 
             if (check_cssText === "") {return false;}
 
             if (typeof(check_cssText) === 'string') {
                 if (check_cssText.includes(string)) {
-                    debug(`[tampermonkey] :: hide_fuzzy :: styleContainsString :: FOUND :: ${check_cssText}`, 3);
+                    debug(`[tampermonkey] :: hide_fuzzy :: styleContainsString :: FOUND :: ${string} :: ${check_cssText}`, 3);
                     return true;}
             }
 
@@ -103,18 +97,25 @@ class SiteClass {
         if (this.fuzzy.length > 0) {
             const allTags = Array.from(document.body.getElementsByTagName("*"));
 
-            // Create one promise for each fuzzy term
-            const fuzzyPromises = this.fuzzy.map(fuzzyName => {
-                return Promise.all(allTags.map(async tag => {
-                    if (attributesContainsString(tag, fuzzyName) || textContainsString(tag, fuzzyName) || styleContainsString(tag, fuzzyName)) {
+            // Iterate over each fuzzy term
+            for (const fuzzyName of this.fuzzy) {
+                // Create one promise for each tag check
+                const tagPromises = allTags.map(async tag => {
+                    const attributesFound = attributesContainsString(tag, fuzzyName);
+                    const textFound = textContainsString(tag, fuzzyName);
+                    const styleFound = styleContainsString(tag, fuzzyName);
+
+                    if (attributesFound || textFound || styleFound) {
                         debug(`[tampermonkey] :: ${ this.domain } :: removed :: ${tag.localName} :: ${fuzzyName}`, 1);
                         tag.remove();
                     }
-                }));
-            });
+                });
 
-            await Promise.all(fuzzyPromises);
+                // Wait for all tags to be checked for the current fuzzyName
+                await Promise.all(tagPromises);
+            }
         }
+
     }
 
 
@@ -218,7 +219,7 @@ function debug (log, level = 0) {
     // Adding a new site
     //sites.push(new SiteClass('domain', true/false, ['class, id, data-name, element.attribute.value, element.text']) )
     //sites.push(new SiteClass('', true, ['']) )
-
+    
 
     sites.push(new SiteClass('agoda.com', true, ['full-funnel-banner-container','footer-copyright-section','footer-links-section',]) )
     sites.push(new SiteClass('booking.com', true, ['footer-lists']) )
@@ -247,6 +248,7 @@ function debug (log, level = 0) {
     sites.push(new SiteClass('zhuimj', true, ['fed-navs-record','fed-foot-info','fed-foot-info fed-part-layout fed-back-whits']) )
     sites.push(new SiteClass('0123movie.net', true, ['list-rel','container-fluid text-bg-dark mt-5']) )
     sites.push(new SiteClass('iq.com', true, ['pca_win_download','vip-tag','footer-box']) )
+    sites.push(new SiteClass('projectfreetv.lol', true, ['Advert1','advert1']) )
 
     // very general blanket wiper
     sites.push(new SiteClass('remove cookie popups', false, ['cookie consent','cookieMsgCls','a46d1b942-78b2-4070-bfb4-0aac57c89202','gdpr','top-banner msft-content-native-ad-preview label-fix sliver-style-tuning','cookiescript_injected']) )
