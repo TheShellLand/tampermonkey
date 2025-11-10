@@ -2,7 +2,7 @@
 // @name         clean the entire world wide web
 // @description  we need a cleaner internet. here is the start.
 // @namespace    http://tampermonkey.net/
-// @version      1.46
+// @version      1.47
 // @author       https://github.com/TheShellLand/tampermonkey
 // @match        https://*/*
 // @match        http://*/*
@@ -193,12 +193,14 @@ function debug (log, level = 0) {
     if (AGGRESSION === 7) {
         setInterval(() => {
             hideAllSites(sites).catch(console.error);
+            debug(`[tampermonkey] :: done`)
         }, 5000);
     }
 
     if (AGGRESSION === 8) {
         setInterval(() => {
             hideAllSites(sites).catch(console.error);
+            debug(`[tampermonkey] :: done`)
         }, 1000);
     }
 
@@ -210,6 +212,11 @@ function debug (log, level = 0) {
         observer.observe(document.body, { childList: true, subtree: true });
     }
 
+    if (AGGRESSION === 11) {
+        setInterval(() => {
+            hideAllSites(sites).catch(console.error);
+        }, 250);
+    }
 
     const sites = [];
 
@@ -219,7 +226,7 @@ function debug (log, level = 0) {
     // Adding a new site
     //sites.push(new SiteClass('domain', true/false, ['class, id, data-name, element.attribute.value, element.text']) )
     //sites.push(new SiteClass('', true, ['']) )
-    
+
 
     sites.push(new SiteClass('agoda.com', true, ['full-funnel-banner-container','footer-copyright-section','footer-links-section',]) )
     sites.push(new SiteClass('booking.com', true, ['footer-lists']) )
@@ -248,7 +255,8 @@ function debug (log, level = 0) {
     sites.push(new SiteClass('zhuimj', true, ['fed-navs-record','fed-foot-info','fed-foot-info fed-part-layout fed-back-whits']) )
     sites.push(new SiteClass('0123movie.net', true, ['list-rel','container-fluid text-bg-dark mt-5']) )
     sites.push(new SiteClass('iq.com', true, ['pca_win_download','vip-tag','footer-box']) )
-    sites.push(new SiteClass('projectfreetv.lol', true, ['Advert1','advert1']) )
+    sites.push(new SiteClass('projectfreetv.lol', true, ['z-index: 2147483647','fcmpbox','Advert1','advert1']) )
+    sites.push(new SiteClass('myflixerz.to', true, ['iframe','Advert1']) )
 
     // very general blanket wiper
     sites.push(new SiteClass('remove cookie popups', false, ['cookie consent','cookieMsgCls','a46d1b942-78b2-4070-bfb4-0aac57c89202','gdpr','top-banner msft-content-native-ad-preview label-fix sliver-style-tuning','cookiescript_injected']) )
