@@ -2,7 +2,7 @@
 // @name         clean the entire world wide web
 // @description  we need a cleaner internet. here is the start.
 // @namespace    http://tampermonkey.net/
-// @version      1.48
+// @version      1.49
 // @author       https://github.com/TheShellLand/tampermonkey
 // @match        https://*/*
 // @match        http://*/*
@@ -12,7 +12,7 @@
 
 
 var DEBUG = 1;
-var AGGRESSION = 7;
+var AGGRESSION = 12;
 
 class SiteClass {
     constructor(domain = 'generic', strict_domain_match = true, fuzzy = []) {
@@ -216,6 +216,16 @@ function debug (log, level = 0) {
         setInterval(() => {
             hideAllSites(sites).catch(console.error);
         }, 250);
+    }
+
+    if (AGGRESSION === 12) {
+        const intervalId = setInterval(() => {
+            hideAllSites(sites).catch(console.error);
+        }, 250);
+        setTimeout(() => {
+            clearInterval(intervalId);
+            debug(`[tampermonkey] :: done`)
+        }, 8000);
     }
 
     const sites = [];
