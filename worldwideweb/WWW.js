@@ -2,7 +2,7 @@
 // @name         clean the entire world wide web
 // @description  we need a cleaner internet. here is the start.
 // @namespace    http://tampermonkey.net/
-// @version      1.49
+// @version      1.50
 // @author       https://github.com/TheShellLand/tampermonkey
 // @match        https://*/*
 // @match        http://*/*
@@ -266,7 +266,7 @@ function debug (log, level = 0) {
     sites.push(new SiteClass('0123movie.net', true, ['list-title','list-rel','container-fluid text-bg-dark mt-5']) )
     sites.push(new SiteClass('iq.com', true, ['pca_win_download','vip-tag','footer-box']) )
     sites.push(new SiteClass('projectfreetv.lol', true, ['z-index: 2147483647','fcmpbox','Advert1','advert1']) )
-    sites.push(new SiteClass('myflixerz.to', true, ['ChmaorrCfozdgenziMrattShzzyrtarnedpoomrzPteonSitfreidnzgtzcseljibcOezzerlebpalraucgeizfznfoocrzEwaocdhnziaWptpnleytzngoectzzdclriehaCtdenTeepxptaNzoldmetzhRzeegvEoxmpezraztdolbizhXCGtIs','z-index: 2147483647','sysmeasuring.net','Advert1']) )
+    sites.push(new SiteClass('myflixerz.to', true, ['search-home-title','btn-imdb','block-rating','server-notice text-center','detail-tags mb-3','user-slot','footer','film_comments','film_related file_realted-list','alert mb-3','ChmaorrCfozdgenziMrattShzzyrtarnedpoomrzPteonSitfreidnzgtzcseljibcOezzerlebpalraucgeizfznfoocrzEwaocdhnziaWptpnleytzngoectzzdclriehaCtdenTeepxptaNzoldmetzhRzeegvEoxmpezraztdolbizhXCGtIs','z-index: 2147483647','sysmeasuring.net','Advert1']) )
 
     // very general blanket wiper
     sites.push(new SiteClass('remove cookie popups', false, ['cookie consent','cookieMsgCls','a46d1b942-78b2-4070-bfb4-0aac57c89202','gdpr','top-banner msft-content-native-ad-preview label-fix sliver-style-tuning','cookiescript_injected']) )
