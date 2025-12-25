@@ -2,7 +2,7 @@
 // @name         clean the entire world wide web
 // @description  we need a cleaner internet. here is the start.
 // @namespace    http://tampermonkey.net/
-// @version      1.54
+// @version      1.55
 // @author       https://github.com/TheShellLand/tampermonkey
 // @match        https://*/*
 // @match        http://*/*
@@ -92,34 +92,50 @@ class SiteClass {
 
             return false;}
 
+       function clearEventListeners(tag) {
+            // Create a deep copy that is clean of addEventListener bindings
+            const cleanClone = tag.cloneNode(true);
+            // Replace the old element in the DOM with the new, clean one
+            tag.parentNode.replaceChild(cleanClone, tag);
+
+            debug(`[tampermonkey] :: hide_fuzzy :: clearEventListeners :: cleared :: ${tag.localName}`, 4);
+            return cleanClone;
+       }
+
 
         // this does the removing //
         if (this.fuzzy.length > 0) {
             const allTags = Array.from(document.body.getElementsByTagName("*"));
+            const checkPromises = [];
 
-            // Iterate over each fuzzy term
-            for (const fuzzyName of this.fuzzy) {
-                // Create one promise for each tag check
-                const tagPromises = allTags.map(async tag => {
-                    const attributesFound = attributesContainsString(tag, fuzzyName);
-                    const textFound = textContainsString(tag, fuzzyName);
-                    const styleFound = styleContainsString(tag, fuzzyName);
+            for (const tag of allTags) {
 
-                    if (attributesFound || textFound || styleFound) {
-                        debug(`[tampermonkey] :: ${ this.domain } :: removed :: ${tag.localName} :: ${fuzzyName}`, 1);
-                        tag.remove();
+                //    We wrap the inner loop logic here
+                const tagCheckOperation = async () => {
+
+                    //const tagClean = clearEventListeners(tag);
+
+                    for (const fuzzyName of this.fuzzy) {
+                        if (attributesContainsString(tag, fuzzyName) || textContainsString(tag, fuzzyName) || styleContainsString(tag, fuzzyName)) {
+                            debug(`[tampermonkey] :: ${ this.domain } :: removed :: ${tag.localName} :: ${fuzzyName}`, 1);
+                            tag.remove();
+                            // Optional: Break the inner loop as soon as we find a match for this tag
+                            break;
+                        }
                     }
-                });
+                };
 
-                // Wait for all tags to be checked for the current fuzzyName
-                await Promise.all(tagPromises);
+                checkPromises.push(tagCheckOperation());
             }
+
+            await Promise.all(checkPromises);
         }
 
     }
 
 
     hide() {
+        debug(`[tampermonkey] :: hide :: started`, 4);
 
         if (this.strict_domain_match) {
             if (! document.domain.includes(this.domain)) {
