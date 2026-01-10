@@ -2,7 +2,7 @@
 // @name         clean the entire world wide web
 // @description  we need a cleaner internet. here is the start.
 // @namespace    http://tampermonkey.net/
-// @version      1.55
+// @version      1.56
 // @author       https://github.com/TheShellLand/tampermonkey
 // @match        https://*/*
 // @match        http://*/*
@@ -114,11 +114,12 @@ class SiteClass {
                 const tagCheckOperation = async () => {
 
                     //const tagClean = clearEventListeners(tag);
+                    const tagClean = tag;
 
                     for (const fuzzyName of this.fuzzy) {
-                        if (attributesContainsString(tag, fuzzyName) || textContainsString(tag, fuzzyName) || styleContainsString(tag, fuzzyName)) {
-                            debug(`[tampermonkey] :: ${ this.domain } :: removed :: ${tag.localName} :: ${fuzzyName}`, 1);
-                            tag.remove();
+                        if (attributesContainsString(tagClean, fuzzyName) || textContainsString(tagClean, fuzzyName) || styleContainsString(tagClean, fuzzyName)) {
+                            debug(`[tampermonkey] :: ${ this.domain } :: removed :: ${tagClean.localName} :: ${fuzzyName}`, 1);
+                            tagClean.remove();
                             // Optional: Break the inner loop as soon as we find a match for this tag
                             break;
                         }
