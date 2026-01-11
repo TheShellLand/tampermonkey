@@ -2,7 +2,7 @@
 // @name         clean the entire world wide web
 // @description  we need a cleaner internet. here is the start.
 // @namespace    http://tampermonkey.net/
-// @version      1.56
+// @version      1.57
 // @author       https://github.com/TheShellLand/tampermonkey
 // @match        https://*/*
 // @match        http://*/*
@@ -287,8 +287,8 @@ function debug (log, level = 0) {
 
     // very general blanket wiper
     sites.push(new SiteClass('remove cookie popups', false, ['cookie consent','cookieMsgCls','a46d1b942-78b2-4070-bfb4-0aac57c89202','gdpr','top-banner msft-content-native-ad-preview label-fix sliver-style-tuning','cookiescript_injected']) )
-    sites.push(new SiteClass('remove ads', false, ['pc-content pc-ads','ads-mask-box','top-banner msft-content-native-ad-preview label-fix sliver-style-tuning',]) )
-    sites.push(new SiteClass('ads dumpster fire', false, ['pc-home-swiper','pc-mask swiper-mask-circle','pc-home-swiper','inner position-relative w-100 h-100','inner position-relative w-100 h-100 ng-star-inserted','tab-live','vg-b','button button-medium button-outline-weak button button-medium button-outline-weak inline-block text-center max-w-full flex items-center button-promotion--icon-gradient button-promotion--full-gradient flex items-center gap-2','flex flex-1 flex-nowrap text-left ml-0 navigation-link-header-group-link navigation-link-header-group-link--force-min-block-size items-start','navigation-item w-full px-3 mb-0.5 navigation-link-header-group navigation-link-header-group--force-min-block-size navigation-link-header-group--expandable']) )
+    sites.push(new SiteClass('remove info popups', false, ['SFA_NV_POP_ZW']) )
+    sites.push(new SiteClass('remove ads', false, ['pc-home-swiper','pc-mask swiper-mask-circle','pc-home-swiper','inner position-relative w-100 h-100','inner position-relative w-100 h-100 ng-star-inserted','tab-live','vg-b','button button-medium button-outline-weak button button-medium button-outline-weak inline-block text-center max-w-full flex items-center button-promotion--icon-gradient button-promotion--full-gradient flex items-center gap-2','flex flex-1 flex-nowrap text-left ml-0 navigation-link-header-group-link navigation-link-header-group-link--force-min-block-size items-start','navigation-item w-full px-3 mb-0.5 navigation-link-header-group navigation-link-header-group--force-min-block-size navigation-link-header-group--expandable','pc-content pc-ads','ads-mask-box','top-banner msft-content-native-ad-preview label-fix sliver-style-tuning',]) )
 
 
 })();
