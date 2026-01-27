@@ -2,7 +2,7 @@
 // @name         clean the entire world wide web
 // @description  we need a cleaner internet. here is the start.
 // @namespace    http://tampermonkey.net/
-// @version      1.64
+// @version      1.65
 // @author       https://github.com/TheShellLand/tampermonkey
 // @match        https://*/*
 // @match        http://*/*
@@ -277,7 +277,7 @@ function debug (log, level = 0) {
     sites.push(new SiteClass('vietjetair.com', true, ['prime','slick-slider','banner1-1723791781611.jpg','aip-chat-box-subpanel','aip-chat-window','aip-chat-box','cw_hello_message','Have you know about Vietjet SkyJoy','bannertrangdangnhaptaikhoanskyjoy']) )
     sites.push(new SiteClass('youtube.com', true, ['footer','ytd-guide-signin-promo-renderer']) )
 
-    sites.push(new SiteClass('olevod.com', true, ['el-tabs el-tabs--top demo-tabs','pc-sdier','pc-home-swiper','color: #e9bd6c;','pinglun','vodlist vodlist_sh','foot foot_nav','comm_list_box','wbalist_thumb','pc-home-swiper','detailsRnak','ads-all','login_input_emoji','qrcode-box','pc-ranking','pc-section-content','pc-ads','el-row pc-container pd0','nav-user df','pc-footers']) )
+    sites.push(new SiteClass('olevod.com', true, ['img_bg','el-tabs__nav-scroll','randRnak','title wes','pc-sdier','pc-home-swiper','color: #e9bd6c;','pinglun','vodlist vodlist_sh','foot foot_nav','comm_list_box','wbalist_thumb','pc-home-swiper','detailsRnak','ads-all','login_input_emoji','qrcode-box','pc-ranking','pc-section-content','pc-ads','el-row pc-container pd0','nav-user df','pc-footers']) )
     sites.push(new SiteClass('iyf.tv', true, ['ps pggf','app-sidebar-related-videos','page-right ng-star-inserted','commentsArea','app-footer','footer','purchase-required','purchase-success','container-p','Welfare','uploadtable','user-block','sign-in-ctn','box justify-content-end','sticky-block']) )
     sites.push(new SiteClass('rophim', true, ['close-it','vpromolink','sspp-area','child-suggest','child-actors','child-top','fade modal-backdrop show','footer-elements','fade v-modal d-modal sspp-modal modal show','my-area','sspp-area is-post','app-download','denied-icon','item-v item-rate','item-v item-comment','v-line','v-rating','sspp-area is-3x2','fade modal-backdrop show','is-image','quality-notice','discuss-wrap','main_user','comment-area'],true))
     sites.push(new SiteClass('yfsp.tv', true, ['auth-label a ng-star-inserted','vg-pause-f','vg-vvk-p ng-star-inserted','vg-tips-text','vg-learn-more','vg-pause-close-font','footer-ctn d-flex','item input','report-icon','iconlixianhuancun1','page-right ng-star-inserted','video-publisher-container','box justify-content-end','auth-label s','bl ng-star-inserted','ss-ctn','container-p','vg-bg','login_input_emoji','list icon_3','qrcode-box','user-login','user-item user-back user-news','gg-tips-text','commentBox','sticky-block','commentsArea']) )
@@ -290,7 +290,7 @@ function debug (log, level = 0) {
     // very general blanket wiper
     sites.push(new SiteClass('remove cookie popups', false, ['cookie consent','cookieMsgCls','a46d1b942-78b2-4070-bfb4-0aac57c89202','gdpr','top-banner msft-content-native-ad-preview label-fix sliver-style-tuning','cookiescript_injected']) )
     sites.push(new SiteClass('remove info popups', false, ['SFA_NV_POP_ZW']) )
-    sites.push(new SiteClass('remove ads', false, ['pc-home-swiper','pc-mask swiper-mask-circle','pc-home-swiper','inner position-relative w-100 h-100','inner position-relative w-100 h-100 ng-star-inserted','tab-live','vg-b','button button-medium button-outline-weak button button-medium button-outline-weak inline-block text-center max-w-full flex items-center button-promotion--icon-gradient button-promotion--full-gradient flex items-center gap-2','flex flex-1 flex-nowrap text-left ml-0 navigation-link-header-group-link navigation-link-header-group-link--force-min-block-size items-start','navigation-item w-full px-3 mb-0.5 navigation-link-header-group navigation-link-header-group--force-min-block-size navigation-link-header-group--expandable','pc-content pc-ads','ads-mask-box','top-banner msft-content-native-ad-preview label-fix sliver-style-tuning',]) )
+    sites.push(new SiteClass('remove ads', false, ['pc-home-swiper','pc-mask swiper-mask-circle','pc-home-swiper','inner position-relative w-100 h-100','inner position-relative w-100 h-100 ng-star-inserted','vg-b','button button-medium button-outline-weak button button-medium button-outline-weak inline-block text-center max-w-full flex items-center button-promotion--icon-gradient button-promotion--full-gradient flex items-center gap-2','flex flex-1 flex-nowrap text-left ml-0 navigation-link-header-group-link navigation-link-header-group-link--force-min-block-size items-start','navigation-item w-full px-3 mb-0.5 navigation-link-header-group navigation-link-header-group--force-min-block-size navigation-link-header-group--expandable','pc-content pc-ads','ads-mask-box','top-banner msft-content-native-ad-preview label-fix sliver-style-tuning',]) )
     sites.push(new SiteClass('remove ads chinese', false, ['app-viplive','ad_content_bottom','ad_44099','vip-class','SFA-724-bottom-bar',]) )
 
 
