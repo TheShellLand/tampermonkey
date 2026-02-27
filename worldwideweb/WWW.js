@@ -2,7 +2,7 @@
 // @name         clean the entire world wide web
 // @description  we need a cleaner internet. here is the start.
 // @namespace    http://tampermonkey.net/
-// @version      2026.02.25.0
+// @version      2026.02.27
 // @author       https://github.com/TheShellLand/tampermonkey
 // @match        https://*/*
 // @match        http://*/*
@@ -47,6 +47,9 @@ function main (log, level = 0) {
     sites.push(new SiteClass('twitch.tv', true, ['upsell','tw-root--theme-light','prime-offers-icon','top-nav-get-bits-button','side-nav','subscribe-button']) )
     sites.push(new SiteClass('vietjetair.com', true, ['prime','slick-slider','banner1-1723791781611.jpg','aip-chat-box-subpanel','aip-chat-window','aip-chat-box','cw_hello_message','Have you know about Vietjet SkyJoy','bannertrangdangnhaptaikhoanskyjoy']) )
     sites.push(new SiteClass('youtube.com', true, ['footer','ytd-guide-signin-promo-renderer']) )
+
+    // shopping
+    sites.push(new SiteClass('temu.com', true, ['Get the Temu App','Up to 90 days','Refund for any issues','Delivery guarantee','Sell on Temu','Join Now','commimg.kwcdn.com','Excludes local items','Free shipping','Never overpay with our Price Match Guarantee','Free shipping excludes local items','Temu homepage','whychoosetemu','Shop now, pay later with','f614261b3eb5','ff667db68fdf','1bc8121f544c','Be wary of messages about delivery issues claiming to be from USPS.','background-color:#0A8800','border-color:#0A8800','border-color: rgb(10, 136, 0)','033fab1b4df9','_3odMaoGt _1m796N1L _3bBSIqrV','_2uO7I21g _2mDQH_RN w5tD6JnU','_33LMUpZn O2CLuy7l','_1uiHHk__']) )
 
     // movie sites
     sites.push(new SiteClass('zhuimj.com', true, ['fed-side-code fed-text-right fed-padding','更多美劇','你可能喜歡的同類美劇','fed-goto-info']) )
