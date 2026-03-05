@@ -2,7 +2,7 @@
 // @name         clean the entire world wide web
 // @description  we need a cleaner internet. here is the start.
 // @namespace    http://tampermonkey.net/
-// @version      2026.02.27
+// @version      2026.03.04
 // @author       https://github.com/TheShellLand/tampermonkey
 // @match        https://*/*
 // @match        http://*/*
@@ -12,7 +12,7 @@
 
 
 var DEBUG = 1;
-var AGGRESSION = 12;
+var AGGRESSION = 6;
 
 
 
@@ -20,11 +20,11 @@ var AGGRESSION = 12;
 
 // Adding a new site
 //sites.push(new SiteClass('domain', true/false, ['class, id, data-name, element.attribute.value, element.text']) )
-//sites.push(new SiteClass('', true, ['']) )
 
 const sites = [];
 
 function main (log, level = 0) {
+    //sites.push(new SiteClass('', true, ['']) )
 
     sites.push(new SiteClass('agoda.com', true, ['full-funnel-banner-container','footer-copyright-section','footer-links-section',]) )
     sites.push(new SiteClass('booking.com', true, ['footer-lists']) )
@@ -32,6 +32,7 @@ function main (log, level = 0) {
     sites.push(new SiteClass('deviantart.com', true, ['PXXBK','D-m7S','_1YQoK','f-14-reg','dreamup','offers-assets','Support and get access to my work','Browse My Shop','_1B1O9','_2AI4s','DealerAdIframe','_3i9c9','_3272G _3U8hI v0vmd _2Ee-T','_1LNZO XN05V _2Och2 _2HvYQ _1rFXc _3Cbmi','core-membership','Core Membership','Treat yourself','Join the world']) )
     sites.push(new SiteClass('grok.com', true, ['w-full flex justify-center','imagine-banner.png','upsell-small']) )
     sites.push(new SiteClass('instagram.com', true, []) )
+    sites.push(new SiteClass('intuit.com', true, ['Starting mid-January: Review and send your tax info from the tax checklist']) )
     sites.push(new SiteClass('ipostal1.com', true, ['offcanvas-footer']) )
     sites.push(new SiteClass('lazada', true, ['popup-dialog-couponPackage','banner-container-inner','pc-banner-slider-container','pc-channel-component','banner-wrapper','card-platform-campaign-banner-container','card-countdown','pc-download-module','banner-image','card-bottom-banner','topActionSell','topActionDownload','footer-first','footer-second','footer-third','footer-fourth','lzd-header-banner','lzd-menu-labels','hotBorder','module_inner_link']) )
     sites.push(new SiteClass('malaysiaairlines.com', true, ['HeaderNotification','global-header-notification','headerNotificationHeight']) )
