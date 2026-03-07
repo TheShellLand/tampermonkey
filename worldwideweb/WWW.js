@@ -2,7 +2,7 @@
 // @name         clean the entire world wide web
 // @description  we need a cleaner internet. here is the start.
 // @namespace    http://tampermonkey.net/
-// @version      2026.03.04
+// @version      2026.03.07
 // @author       https://github.com/TheShellLand/tampermonkey
 // @match        https://*/*
 // @match        http://*/*
@@ -58,12 +58,13 @@ function main (log, level = 0) {
     sites.push(new SiteClass('olevod.com', true, ['You might like','play_box_right','pannel clearfix','img_bg','el-tabs__nav-scroll','randRnak','title wes','pc-sdier','pc-home-swiper','color: #e9bd6c;','pinglun','vodlist vodlist_sh','foot foot_nav','comm_list_box','wbalist_thumb','pc-home-swiper','detailsRnak','ads-all','login_input_emoji','qrcode-box','pc-ranking','pc-section-content','pc-ads','el-row pc-container pd0','nav-user df','pc-footers']) )
     sites.push(new SiteClass('iyf.tv', true, ['ps pggf','app-sidebar-related-videos','page-right ng-star-inserted','commentsArea','app-footer','footer','purchase-required','purchase-success','container-p','Welfare','uploadtable','user-block','sign-in-ctn','box justify-content-end','sticky-block']) )
     sites.push(new SiteClass('rophim', true, ['close-it','vpromolink','sspp-area','child-suggest','child-actors','child-top','fade modal-backdrop show','footer-elements','fade v-modal d-modal sspp-modal modal show','my-area','sspp-area is-post','app-download','denied-icon','item-v item-rate','item-v item-comment','v-line','v-rating','sspp-area is-3x2','fade modal-backdrop show','is-image','quality-notice','discuss-wrap','main_user','comment-area'],true))
+    sites.push(new SiteClass('pointnorth.io', true, ['child-box child-discuss','close-it','vpromolink','sspp-area','child-suggest','child-actors','child-top','fade modal-backdrop show','footer-elements','fade v-modal d-modal sspp-modal modal show','my-area','sspp-area is-post','app-download','denied-icon','item-v item-rate','item-v item-comment','v-line','v-rating','sspp-area is-3x2','fade modal-backdrop show','is-image','quality-notice','discuss-wrap','main_user','comment-area'],true))
     sites.push(new SiteClass('yfsp.tv', true, ['auth-label a ng-star-inserted','vg-pause-f','vg-vvk-p ng-star-inserted','vg-tips-text','vg-learn-more','vg-pause-close-font','footer-ctn d-flex','item input','report-icon','iconlixianhuancun1','page-right ng-star-inserted','video-publisher-container','box justify-content-end','auth-label s','bl ng-star-inserted','ss-ctn','container-p','vg-bg','login_input_emoji','list icon_3','qrcode-box','user-login','user-item user-back user-news','gg-tips-text','commentBox','sticky-block','commentsArea']) )
     sites.push(new SiteClass('zhuimj', true, ['fed-navs-record','fed-foot-info','fed-foot-info fed-part-layout fed-back-whits']) )
     sites.push(new SiteClass('0123movie.net', true, ['list-title','list-rel','container-fluid text-bg-dark mt-5']) )
     sites.push(new SiteClass('iq.com', true, ['pca_win_download','vip-tag','footer-box']) )
     sites.push(new SiteClass('projectfreetv.lol', true, ['z-index: 2147483647','fcmpbox','Advert1','advert1']) )
-    sites.push(new SiteClass('myflixerz.to', true, ['search-home-title','btn-imdb','block-rating','server-notice text-center','detail-tags mb-3','user-slot','footer','film_comments','film_related file_realted-list','alert mb-3','ChmaorrCfozdgenziMrattShzzyrtarnedpoomrzPteonSitfreidnzgtzcseljibcOezzerlebpalraucgeizfznfoocrzEwaocdhnziaWptpnleytzngoectzzdclriehaCtdenTeepxptaNzoldmetzhRzeegvEoxmpezraztdolbizhXCGtIs','z-index: 2147483647','sysmeasuring.net','Advert1']) )
+    sites.push(new SiteClass('myflixerz.to', true, ['data-cfasync','search-home-title','btn-imdb','block-rating','server-notice text-center','detail-tags mb-3','user-slot','footer','film_comments','film_related file_realted-list','alert mb-3','ChmaorrCfozdgenziMrattShzzyrtarnedpoomrzPteonSitfreidnzgtzcseljibcOezzerlebpalraucgeizfznfoocrzEwaocdhnziaWptpnleytzngoectzzdclriehaCtdenTeepxptaNzoldmetzhRzeegvEoxmpezraztdolbizhXCGtIs','z-index: 2147483647','sysmeasuring.net','Advert1']) )
 
     // very general wiper
     sites.push(new SiteClass('remove cookie popups', false, ['cookie consent','cookieMsgCls','a46d1b942-78b2-4070-bfb4-0aac57c89202','gdpr','top-banner msft-content-native-ad-preview label-fix sliver-style-tuning','cookiescript_injected']) )
@@ -95,17 +96,22 @@ class SiteClass {
             for (var attrItem in attrList) {
 
                 var attr = attrList[attrItem];
+                var name = attr.name;
                 var value = attr.value;
-                debug(`[tampermonkey] :: hide_fuzzy :: attributesContainsString :: value :: ${tag.attributes} :: ${value}`, 4);
+                debug(`[tampermonkey] :: hide_fuzzy :: attributesContainsString :: value :: ${tag.attributes} :: ${name} :: ${value}`, 4);
 
                 if (typeof(value) === undefined) {continue;}
 
                 if (value.includes(string)) {
-                    debug(`[tampermonkey] :: hide_fuzzy :: attributesContainsString :: FOUND :: ${string} :: ${value}`, 3);
-                    return true;}}
+                    debug(`[tampermonkey] :: hide_fuzzy :: attributesContainsString :: FOUND :: ${string} :: ${name} :: ${value}`, 3);
+                    return true;}
+
+                if (value.includes(string)) {
+                    debug(`[tampermonkey] :: hide_fuzzy :: attributesContainsString :: FOUND :: ${string} :: ${name} :: ${value}`, 3);
+                    return true;}
+            }
 
             return false;}
-
 
         function textContainsString(tag, string) {
             // check the element.text if it contains the string //
