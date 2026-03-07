@@ -2,7 +2,7 @@
 // @name         clean the entire world wide web
 // @description  we need a cleaner internet. here is the start.
 // @namespace    http://tampermonkey.net/
-// @version      2026.03.07.2
+// @version      2026.03.07.3
 // @author       https://github.com/TheShellLand/tampermonkey
 // @match        https://*/*
 // @match        http://*/*
@@ -54,7 +54,6 @@ function main (log, level = 0) {
 
     // movie sites
     sites.push(new SiteClass('yfsp.tv', true, ['d-flex align-items-center user-data-inner ng-star-inserted','d-inline-flex align-items-center','action ng-star-inserted','w-100 h-100 bg-hoverable ng-star-inserted','auth-label a ng-star-inserted','vg-pause-f','vg-vvk-p ng-star-inserted','vg-tips-text','vg-learn-more','vg-pause-close-font','footer-ctn d-flex','item input','report-icon','iconlixianhuancun1','page-right ng-star-inserted','video-publisher-container','box justify-content-end','auth-label s','bl ng-star-inserted','ss-ctn','container-p','vg-bg','login_input_emoji','list icon_3','qrcode-box','user-login','user-item user-back user-news','gg-tips-text','commentBox','sticky-block','commentsArea']) )
-
     sites.push(new SiteClass('zhuimj.com', true, ['fed-side-code fed-text-right fed-padding','更多美劇','你可能喜歡的同類美劇','fed-goto-info']) )
     sites.push(new SiteClass('bilibili.com', true, ['palette-button','recommended-swipe','ad-report','fixed-sidenav-storage','act-now','bpx-player-toast-wrap','commentapp','bpx-player-video-inputbar','plp-r','comment-module','bg-container','download-client-trigger','nav-tool-container','right-entry','navTools_floatNavExp','recommend_wrap','login-tip']) )
     sites.push(new SiteClass('olevod.com', true, ['You might like','play_box_right','pannel clearfix','img_bg','el-tabs__nav-scroll','randRnak','title wes','pc-sdier','pc-home-swiper','color: #e9bd6c;','pinglun','vodlist vodlist_sh','foot foot_nav','comm_list_box','wbalist_thumb','pc-home-swiper','detailsRnak','ads-all','login_input_emoji','qrcode-box','pc-ranking','pc-section-content','pc-ads','el-row pc-container pd0','nav-user df','pc-footers']) )
@@ -65,7 +64,7 @@ function main (log, level = 0) {
     sites.push(new SiteClass('0123movie.net', true, ['list-title','list-rel','container-fluid text-bg-dark mt-5']) )
     sites.push(new SiteClass('iq.com', true, ['pca_win_download','vip-tag','footer-box']) )
     sites.push(new SiteClass('projectfreetv.lol', true, ['z-index: 2147483647','fcmpbox','Advert1','advert1']) )
-    sites.push(new SiteClass('myflixerz.to', true, ['data-cfasync','search-home-title','btn-imdb','block-rating','server-notice text-center','detail-tags mb-3','user-slot','footer','film_comments','film_related file_realted-list','alert mb-3','ChmaorrCfozdgenziMrattShzzyrtarnedpoomrzPteonSitfreidnzgtzcseljibcOezzerlebpalraucgeizfznfoocrzEwaocdhnziaWptpnleytzngoectzzdclriehaCtdenTeepxptaNzoldmetzhRzeegvEoxmpezraztdolbizhXCGtIs','z-index: 2147483647','sysmeasuring.net','Advert1']) )
+    sites.push(new SiteClass('myflixerz.to', true, ['ijb','Android App','data-cfasync','search-home-title','btn-imdb','block-rating','server-notice text-center','detail-tags mb-3','user-slot','footer','film_comments','film_related file_realted-list','alert mb-3','ChmaorrCfozdgenziMrattShzzyrtarnedpoomrzPteonSitfreidnzgtzcseljibcOezzerlebpalraucgeizfznfoocrzEwaocdhnziaWptpnleytzngoectzzdclriehaCtdenTeepxptaNzoldmetzhRzeegvEoxmpezraztdolbizhXCGtIs','z-index: 2147483647','sysmeasuring.net','Advert1']) )
 
     // very general wiper
     sites.push(new SiteClass('remove cookie popups', false, ['cookie consent','cookieMsgCls','a46d1b942-78b2-4070-bfb4-0aac57c89202','gdpr','top-banner msft-content-native-ad-preview label-fix sliver-style-tuning','cookiescript_injected']) )
