@@ -2,7 +2,7 @@
 // @name         clean the entire world wide web
 // @description  we need a cleaner internet. here is the start.
 // @namespace    http://tampermonkey.net/
-// @version      2026.03.07.1
+// @version      2026.03.07.2
 // @author       https://github.com/TheShellLand/tampermonkey
 // @match        https://*/*
 // @match        http://*/*
@@ -12,7 +12,7 @@
 
 
 var DEBUG = 1;
-var AGGRESSION = 6;
+var AGGRESSION = 13;
 
 
 
@@ -53,13 +53,14 @@ function main (log, level = 0) {
     sites.push(new SiteClass('temu.com', true, ['Get the Temu App','Up to 90 days','Refund for any issues','Delivery guarantee','Sell on Temu','Join Now','commimg.kwcdn.com','Excludes local items','Free shipping','Never overpay with our Price Match Guarantee','Free shipping excludes local items','Temu homepage','whychoosetemu','Shop now, pay later with','f614261b3eb5','ff667db68fdf','1bc8121f544c','Be wary of messages about delivery issues claiming to be from USPS.','background-color:#0A8800','border-color:#0A8800','border-color: rgb(10, 136, 0)','033fab1b4df9','_3odMaoGt _1m796N1L _3bBSIqrV','_2uO7I21g _2mDQH_RN w5tD6JnU','_33LMUpZn O2CLuy7l','_1uiHHk__']) )
 
     // movie sites
+    sites.push(new SiteClass('yfsp.tv', true, ['d-flex align-items-center user-data-inner ng-star-inserted','d-inline-flex align-items-center','action ng-star-inserted','w-100 h-100 bg-hoverable ng-star-inserted','auth-label a ng-star-inserted','vg-pause-f','vg-vvk-p ng-star-inserted','vg-tips-text','vg-learn-more','vg-pause-close-font','footer-ctn d-flex','item input','report-icon','iconlixianhuancun1','page-right ng-star-inserted','video-publisher-container','box justify-content-end','auth-label s','bl ng-star-inserted','ss-ctn','container-p','vg-bg','login_input_emoji','list icon_3','qrcode-box','user-login','user-item user-back user-news','gg-tips-text','commentBox','sticky-block','commentsArea']) )
+
     sites.push(new SiteClass('zhuimj.com', true, ['fed-side-code fed-text-right fed-padding','更多美劇','你可能喜歡的同類美劇','fed-goto-info']) )
     sites.push(new SiteClass('bilibili.com', true, ['palette-button','recommended-swipe','ad-report','fixed-sidenav-storage','act-now','bpx-player-toast-wrap','commentapp','bpx-player-video-inputbar','plp-r','comment-module','bg-container','download-client-trigger','nav-tool-container','right-entry','navTools_floatNavExp','recommend_wrap','login-tip']) )
     sites.push(new SiteClass('olevod.com', true, ['You might like','play_box_right','pannel clearfix','img_bg','el-tabs__nav-scroll','randRnak','title wes','pc-sdier','pc-home-swiper','color: #e9bd6c;','pinglun','vodlist vodlist_sh','foot foot_nav','comm_list_box','wbalist_thumb','pc-home-swiper','detailsRnak','ads-all','login_input_emoji','qrcode-box','pc-ranking','pc-section-content','pc-ads','el-row pc-container pd0','nav-user df','pc-footers']) )
     sites.push(new SiteClass('iyf.tv', true, ['ps pggf','app-sidebar-related-videos','page-right ng-star-inserted','commentsArea','app-footer','footer','purchase-required','purchase-success','container-p','Welfare','uploadtable','user-block','sign-in-ctn','box justify-content-end','sticky-block']) )
     sites.push(new SiteClass('rophim', true, ['close-it','vpromolink','sspp-area','child-suggest','child-actors','child-top','fade modal-backdrop show','footer-elements','fade v-modal d-modal sspp-modal modal show','my-area','sspp-area is-post','app-download','denied-icon','item-v item-rate','item-v item-comment','v-line','v-rating','sspp-area is-3x2','fade modal-backdrop show','is-image','quality-notice','discuss-wrap','main_user','comment-area'],true))
     sites.push(new SiteClass('pointnorth.io', true, ['child-box child-discuss','close-it','vpromolink','sspp-area','child-suggest','child-actors','child-top','fade modal-backdrop show','footer-elements','fade v-modal d-modal sspp-modal modal show','my-area','sspp-area is-post','app-download','denied-icon','item-v item-rate','item-v item-comment','v-line','v-rating','sspp-area is-3x2','fade modal-backdrop show','is-image','quality-notice','discuss-wrap','main_user','comment-area'],true))
-    sites.push(new SiteClass('yfsp.tv', true, ['auth-label a ng-star-inserted','vg-pause-f','vg-vvk-p ng-star-inserted','vg-tips-text','vg-learn-more','vg-pause-close-font','footer-ctn d-flex','item input','report-icon','iconlixianhuancun1','page-right ng-star-inserted','video-publisher-container','box justify-content-end','auth-label s','bl ng-star-inserted','ss-ctn','container-p','vg-bg','login_input_emoji','list icon_3','qrcode-box','user-login','user-item user-back user-news','gg-tips-text','commentBox','sticky-block','commentsArea']) )
     sites.push(new SiteClass('zhuimj', true, ['fed-navs-record','fed-foot-info','fed-foot-info fed-part-layout fed-back-whits']) )
     sites.push(new SiteClass('0123movie.net', true, ['list-title','list-rel','container-fluid text-bg-dark mt-5']) )
     sites.push(new SiteClass('iq.com', true, ['pca_win_download','vip-tag','footer-box']) )
@@ -69,7 +70,7 @@ function main (log, level = 0) {
     // very general wiper
     sites.push(new SiteClass('remove cookie popups', false, ['cookie consent','cookieMsgCls','a46d1b942-78b2-4070-bfb4-0aac57c89202','gdpr','top-banner msft-content-native-ad-preview label-fix sliver-style-tuning','cookiescript_injected']) )
     sites.push(new SiteClass('remove info popups', false, ['SFA_NV_POP_ZW']) )
-    sites.push(new SiteClass('remove ads', false, ['pc-home-swiper','pc-mask swiper-mask-circle','pc-home-swiper','inner position-relative w-100 h-100','inner position-relative w-100 h-100 ng-star-inserted','vg-b','button button-medium button-outline-weak button button-medium button-outline-weak inline-block text-center max-w-full flex items-center button-promotion--icon-gradient button-promotion--full-gradient flex items-center gap-2','flex flex-1 flex-nowrap text-left ml-0 navigation-link-header-group-link navigation-link-header-group-link--force-min-block-size items-start','navigation-item w-full px-3 mb-0.5 navigation-link-header-group navigation-link-header-group--force-min-block-size navigation-link-header-group--expandable','pc-content pc-ads','ads-mask-box','top-banner msft-content-native-ad-preview label-fix sliver-style-tuning',]) )
+    sites.push(new SiteClass('remove ads', false, ['pc-home-swiper','pc-mask swiper-mask-circle','pc-home-swiper','button button-medium button-outline-weak button button-medium button-outline-weak inline-block text-center max-w-full flex items-center button-promotion--icon-gradient button-promotion--full-gradient flex items-center gap-2','flex flex-1 flex-nowrap text-left ml-0 navigation-link-header-group-link navigation-link-header-group-link--force-min-block-size items-start','navigation-item w-full px-3 mb-0.5 navigation-link-header-group navigation-link-header-group--force-min-block-size navigation-link-header-group--expandable','pc-content pc-ads','ads-mask-box','top-banner msft-content-native-ad-preview label-fix sliver-style-tuning',]) )
     sites.push(new SiteClass('remove ads chinese', false, ['app-viplive','ad_content_bottom','ad_44099','vip-class','SFA-724-bottom-bar',]) )
 
 }
@@ -181,8 +182,8 @@ class SiteClass {
                 //    We wrap the inner loop logic here
                 const tagCheckOperation = async () => {
 
-                    const tagClean = clearEventListeners(tag);
-                    //const tagClean = tag;
+                    //const tagClean = clearEventListeners(tag);
+                    const tagClean = tag;
 
                     for (const fuzzyName of this.fuzzy) {
                         if (attributesContainsString(tagClean, fuzzyName) || textContainsString(tagClean, fuzzyName) || styleContainsString(tagClean, fuzzyName)) {
@@ -312,6 +313,14 @@ function debug (log, level = 0) {
             clearInterval(intervalId);
             debug(`[tampermonkey] :: done`)
         }, 8000);
+    }
+
+    if (AGGRESSION === 13) {
+        setTimeout(() => {
+            hideAllSites(sites).catch(console.error);
+            debug(`[tampermonkey] :: done`)
+        }, 800);
+
     }
 
 })();
