@@ -2,7 +2,7 @@
 // @name         clean the entire world wide web
 // @description  we need a cleaner internet. here is the start.
 // @namespace    http://tampermonkey.net/
-// @version      2026.03.07.3
+// @version      2026.03.09
 // @author       https://github.com/TheShellLand/tampermonkey
 // @match        https://*/*
 // @match        http://*/*
@@ -56,7 +56,8 @@ function main (log, level = 0) {
     sites.push(new SiteClass('yfsp.tv', true, ['d-flex align-items-center user-data-inner ng-star-inserted','d-inline-flex align-items-center','action ng-star-inserted','w-100 h-100 bg-hoverable ng-star-inserted','auth-label a ng-star-inserted','vg-pause-f','vg-vvk-p ng-star-inserted','vg-tips-text','vg-learn-more','vg-pause-close-font','footer-ctn d-flex','item input','report-icon','iconlixianhuancun1','page-right ng-star-inserted','video-publisher-container','box justify-content-end','auth-label s','bl ng-star-inserted','ss-ctn','container-p','vg-bg','login_input_emoji','list icon_3','qrcode-box','user-login','user-item user-back user-news','gg-tips-text','commentBox','sticky-block','commentsArea']) )
     sites.push(new SiteClass('zhuimj.com', true, ['fed-side-code fed-text-right fed-padding','更多美劇','你可能喜歡的同類美劇','fed-goto-info']) )
     sites.push(new SiteClass('bilibili.com', true, ['palette-button','recommended-swipe','ad-report','fixed-sidenav-storage','act-now','bpx-player-toast-wrap','commentapp','bpx-player-video-inputbar','plp-r','comment-module','bg-container','download-client-trigger','nav-tool-container','right-entry','navTools_floatNavExp','recommend_wrap','login-tip']) )
-    sites.push(new SiteClass('olevod.com', true, ['You might like','play_box_right','pannel clearfix','img_bg','el-tabs__nav-scroll','randRnak','title wes','pc-sdier','pc-home-swiper','color: #e9bd6c;','pinglun','vodlist vodlist_sh','foot foot_nav','comm_list_box','wbalist_thumb','pc-home-swiper','detailsRnak','ads-all','login_input_emoji','qrcode-box','pc-ranking','pc-section-content','pc-ads','el-row pc-container pd0','nav-user df','pc-footers']) )
+
+    sites.push(new SiteClass('olevod.com', true, ['randRnak','You might like','play_box_right','pannel clearfix','img_bg','el-tabs__nav-scroll','randRnak','title wes','pc-sdier','pc-home-swiper','color: #e9bd6c;','pinglun','vodlist vodlist_sh','foot foot_nav','comm_list_box','wbalist_thumb','pc-home-swiper','detailsRnak','ads-all','login_input_emoji','qrcode-box','pc-ranking','pc-section-content','pc-ads','el-row pc-container pd0','nav-user df','pc-footers']) )
     sites.push(new SiteClass('iyf.tv', true, ['ps pggf','app-sidebar-related-videos','page-right ng-star-inserted','commentsArea','app-footer','footer','purchase-required','purchase-success','container-p','Welfare','uploadtable','user-block','sign-in-ctn','box justify-content-end','sticky-block']) )
     sites.push(new SiteClass('rophim', true, ['close-it','vpromolink','sspp-area','child-suggest','child-actors','child-top','fade modal-backdrop show','footer-elements','fade v-modal d-modal sspp-modal modal show','my-area','sspp-area is-post','app-download','denied-icon','item-v item-rate','item-v item-comment','v-line','v-rating','sspp-area is-3x2','fade modal-backdrop show','is-image','quality-notice','discuss-wrap','main_user','comment-area'],true))
     sites.push(new SiteClass('pointnorth.io', true, ['child-box child-discuss','close-it','vpromolink','sspp-area','child-suggest','child-actors','child-top','fade modal-backdrop show','footer-elements','fade v-modal d-modal sspp-modal modal show','my-area','sspp-area is-post','app-download','denied-icon','item-v item-rate','item-v item-comment','v-line','v-rating','sspp-area is-3x2','fade modal-backdrop show','is-image','quality-notice','discuss-wrap','main_user','comment-area'],true))
