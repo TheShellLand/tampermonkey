@@ -2,7 +2,7 @@
 // @name         clean the entire world wide web
 // @description  we need a cleaner internet. here is the start.
 // @namespace    http://tampermonkey.net/
-// @version      2026.5.25.1
+// @version      2026.5.25.2
 // @author       https://github.com/TheShellLand/tampermonkey
 // @match        https://*/*
 // @match        http://*/*
@@ -60,6 +60,7 @@ function main (log, level = 0) {
     sites.push(new SiteClass('olevod', true, ['click.gif','randRnak','You might like','play_box_right','pannel clearfix','img_bg','el-tabs__nav-scroll','randRnak','title wes','pc-sdier','pc-home-swiper','color: #e9bd6c;','pinglun','vodlist vodlist_sh','foot foot_nav','comm_list_box','wbalist_thumb','pc-home-swiper','detailsRnak','ads-all','login_input_emoji','qrcode-box','pc-ranking','pc-section-content','pc-ads','el-row pc-container pd0','nav-user df','pc-footers']) )
     sites.push(new SiteClass('iyf', true, ['ps pggf','app-sidebar-related-videos','page-right ng-star-inserted','commentsArea','app-footer','footer','purchase-required','purchase-success','container-p','Welfare','uploadtable','user-block','sign-in-ctn','box justify-content-end','sticky-block']) )
     sites.push(new SiteClass('rophim', true, ['close-it','vpromolink','sspp-area','child-suggest','child-actors','child-top','fade modal-backdrop show','footer-elements','fade v-modal d-modal sspp-modal modal show','my-area','sspp-area is-post','app-download','denied-icon','item-v item-rate','item-v item-comment','v-line','v-rating','sspp-area is-3x2','fade modal-backdrop show','is-image','quality-notice','discuss-wrap','main_user','comment-area'],true))
+    sites.push(new SiteClass('rophimz', true, ['close-it','vpromolink','sspp-area','child-suggest','child-actors','child-top','fade modal-backdrop show','footer-elements','fade v-modal d-modal sspp-modal modal show','my-area','sspp-area is-post','app-download','denied-icon','item-v item-rate','item-v item-comment','v-line','v-rating','sspp-area is-3x2','fade modal-backdrop show','is-image','quality-notice','discuss-wrap','main_user','comment-area'],true))
     sites.push(new SiteClass('pointnorth', true, ['child-box child-discuss','close-it','vpromolink','sspp-area','child-suggest','child-actors','child-top','fade modal-backdrop show','footer-elements','fade v-modal d-modal sspp-modal modal show','my-area','sspp-area is-post','app-download','denied-icon','item-v item-rate','item-v item-comment','v-line','v-rating','sspp-area is-3x2','fade modal-backdrop show','is-image','quality-notice','discuss-wrap','main_user','comment-area'],true))
     sites.push(new SiteClass('zhuimj', true, ['fed-navs-record','fed-foot-info','fed-foot-info fed-part-layout fed-back-whits']) )
     sites.push(new SiteClass('0123movie', true, ['list-title','list-rel','container-fluid text-bg-dark mt-5']) )
