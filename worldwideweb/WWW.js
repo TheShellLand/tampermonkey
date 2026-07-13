@@ -2,7 +2,7 @@
 // @name         clean the entire world wide web
 // @description  we need a cleaner internet. here is the start.
 // @namespace    http://tampermonkey.net/
-// @version      2026.7.3
+// @version      2026.7.13
 // @author       https://github.com/TheShellLand/tampermonkey
 // @match        https://*/*
 // @match        http://*/*
@@ -50,7 +50,7 @@ function main (log, level = 0) {
     sites.push(new SiteClass('youtube.com', true, ['footer','ytd-guide-signin-promo-renderer']) )
 
     // shopping
-    sites.push(new SiteClass('temu.com', true, ['Get the Temu App','Up to 90 days','Refund for any issues','Delivery guarantee','Sell on Temu','Join Now','commimg.kwcdn.com','Excludes local items','Free shipping','Never overpay with our Price Match Guarantee','Free shipping excludes local items','Temu homepage','whychoosetemu','Shop now, pay later with','f614261b3eb5','ff667db68fdf','1bc8121f544c','Be wary of messages about delivery issues claiming to be from USPS.','background-color:#0A8800','border-color:#0A8800','border-color: rgb(10, 136, 0)','033fab1b4df9','_3odMaoGt _1m796N1L _3bBSIqrV','_2uO7I21g _2mDQH_RN w5tD6JnU','_33LMUpZn O2CLuy7l','_1uiHHk__']) )
+    sites.push(new SiteClass('temu.com', true, ['region','Get the Temu App','Up to 90 days','Refund for any issues','Delivery guarantee','Sell on Temu','Join Now','Excludes local items','Free shipping','Never overpay with our Price Match Guarantee','Free shipping excludes local items','Temu homepage','whychoosetemu','Shop now, pay later with','Be wary of messages about delivery issues claiming to be from USPS.']) )
 
     // movie sites
     sites.push(new SiteClass('yfsp.tv', true, ['d-flex align-items-center user-data-inner ng-star-inserted','d-inline-flex align-items-center','action ng-star-inserted','w-100 h-100 bg-hoverable ng-star-inserted','auth-label a ng-star-inserted','vg-pause-f','vg-vvk-p ng-star-inserted','vg-tips-text','vg-learn-more','vg-pause-close-font','footer-ctn d-flex','item input','report-icon','iconlixianhuancun1','page-right ng-star-inserted','video-publisher-container','box justify-content-end','auth-label s','bl ng-star-inserted','ss-ctn','container-p','vg-bg','login_input_emoji','list icon_3','qrcode-box','user-login','user-item user-back user-news','gg-tips-text','commentBox','sticky-block','commentsArea']) )
@@ -326,4 +326,3 @@ function debug (log, level = 0) {
     }
 
 })();
-
