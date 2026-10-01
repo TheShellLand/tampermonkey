@@ -2,7 +2,7 @@
 // @name         clean the entire world wide web
 // @description  we need a cleaner internet. here is the start.
 // @namespace    http://tampermonkey.net/
-// @version      2026.10.1
+// @version      2026.10.1.1
 // @author       https://github.com/TheShellLand/tampermonkey
 // @match        https://*/*
 // @match        http://*/*
@@ -12,7 +12,7 @@
 
 
 var DEBUG = 1;
-var AGGRESSION = 13;
+var AGGRESSION = 6;
 
 
 
@@ -68,7 +68,7 @@ function main (log, level = 0) {
     sites.push(new SiteClass('iq.com', true, ['pca_win_download','vip-tag','footer-box']) )
     sites.push(new SiteClass('projectfreetv', true, ['z-index: 2147483647','fcmpbox','Advert1','advert1']) )
     sites.push(new SiteClass('myflixerz', true, ['ijb','Android App','data-cfasync','search-home-title','btn-imdb','block-rating','server-notice text-center','detail-tags mb-3','user-slot','footer','film_comments','film_related file_realted-list','alert mb-3','ChmaorrCfozdgenziMrattShzzyrtarnedpoomrzPteonSitfreidnzgtzcseljibcOezzerlebpalraucgeizfznfoocrzEwaocdhnziaWptpnleytzngoectzzdclriehaCtdenTeepxptaNzoldmetzhRzeegvEoxmpezraztdolbizhXCGtIs','z-index: 2147483647','sysmeasuring.net','Advert1']) )
-    sites.push(new SiteClass('noternet', true, ['no-ads-under']) )
+    sites.push(new SiteClass('noternet', true, ['popup banner','popup-dialog','is-catfish','catfish','footer-elements','top-middle-banner-offset','comment-area']) )
 
     // very general wiper
     sites.push(new SiteClass('remove cookie popups', false, ['cookie consent','cookieMsgCls','a46d1b942-78b2-4070-bfb4-0aac57c89202','gdpr','top-banner msft-content-native-ad-preview label-fix sliver-style-tuning','cookiescript_injected']) )
