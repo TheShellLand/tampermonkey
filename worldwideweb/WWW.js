@@ -12,7 +12,7 @@
 
 
 var DEBUG = 1;
-var AGGRESSION = 6;
+var AGGRESSION = 14;
 
 
 // SITES
@@ -337,6 +337,14 @@ function debug(log, level = 0) {
             hideAllSites(sites).catch(console.error);
             debug(`[tampermonkey] :: done`)
         }, 800);
+
+    }
+
+    if (AGGRESSION === 14) {
+        setTimeout(() => {
+            hideAllSites(sites).catch(console.error);
+            debug(`[tampermonkey] :: done`)
+        }, 2000);
 
     }
 
