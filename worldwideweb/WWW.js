@@ -2,7 +2,7 @@
 // @name         clean the entire world wide web
 // @description  we need a cleaner internet. here is the start.
 // @namespace    http://tampermonkey.net/
-// @version      2026.11.7
+// @version      2026.11.10
 // @author       https://github.com/TheShellLand/tampermonkey
 // @match        https://*/*
 // @match        http://*/*
@@ -12,7 +12,7 @@
 
 
 var DEBUG = 1;
-var AGGRESSION = 14;
+var AGGRESSION = 1;
 
 
 // SITES
