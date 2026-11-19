@@ -2,7 +2,7 @@
 // @name         clean the entire world wide web
 // @description  we need a cleaner internet. here is the start.
 // @namespace    http://tampermonkey.net/
-// @version      2026.11.20
+// @version      2026.11.21
 // @author       https://github.com/TheShellLand/tampermonkey
 // @match        https://*/*
 // @match        http://*/*
@@ -349,8 +349,9 @@ function debug(log, level = 0) {
     }
 
     if (AGGRESSION === 15) {
-        hideAllSites(sites).catch(console.error);
-        
+        if (document.body) {
+            hideAllSites(sites).catch(console.error);
+        }
         setInterval(() => {
             hideAllSites(sites).catch(console.error);
         }, 60000);
