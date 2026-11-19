@@ -2,7 +2,7 @@
 // @name         clean the entire world wide web
 // @description  we need a cleaner internet. here is the start.
 // @namespace    http://tampermonkey.net/
-// @version      2026.11.21
+// @version      2026.11.22
 // @author       https://github.com/TheShellLand/tampermonkey
 // @match        https://*/*
 // @match        http://*/*
@@ -228,7 +228,7 @@ class SiteClass {
             }
         }
 
-        this.hide_fuzzy();
+        return this.hide_fuzzy();
     }
 
 }
@@ -240,11 +240,33 @@ function debug(log, level = 0) {
     }
 }
 
+// Waits until document.body exists without freezing the browser
+function waitForBody() {
+    return new Promise((resolve) => {
+        if (document.body) {
+            return resolve(document.body);
+        }
 
-(function () {
+        const observer = new MutationObserver(() => {
+            if (document.body) {
+                observer.disconnect();
+                resolve(document.body);
+            }
+        });
+
+        observer.observe(document.documentElement, {
+            childList: true,
+            subtree: true
+        });
+    });
+}
+
+(async function () {
     'use strict';
 
     main();
+
+    await waitForBody();
 
     // Periodically call hide() on each SiteClass instance
     async function hideAllSites(sites) {
